@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://xqtechsolutions.in/sitemap-index.xml

@@ -1,0 +1,27 @@
+---
+interface Props {
+  variant?: 'dark' | 'light';
+}
+
+const { variant = 'dark' } = Astro.props;
+const isDark = variant === 'dark';
+---
+
+<header class:list={[
+  "w-full py-4 px-6 md:px-12",
+  isDark ? "bg-primary text-white" : "bg-white text-primary border-b border-gray-200"
+]}>
+  <nav class="max-w-6xl mx-auto flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2 text-xl font-bold tracking-tight">
+      <span class="text-accent">XQ</span> Tech Solutions
+    </a>
+    <div class="flex items-center gap-6 text-sm font-medium">
+      <a href="/#apps" class:list={["transition-colors hover:text-accent", isDark ? "text-gray-300" : "text-muted"]}>
+        Apps
+      </a>
+      <a href="/#contact" class:list={["transition-colors hover:text-accent", isDark ? "text-gray-300" : "text-muted"]}>
+        Contact
+      </a>
+    </div>
+  </nav>
+</header>
