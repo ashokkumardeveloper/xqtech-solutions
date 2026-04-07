@@ -3,11 +3,54 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
+
+const schema = JSON.stringify([
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "XQ Tech Solutions",
+    "url": "https://xqtechsolutions.in",
+    "logo": "https://xqtechsolutions.in/images/qxtechlogo.png",
+    "description": "XQ Tech Solutions builds powerful mobile applications for local businesses across India. From livestock management to e-commerce, we deliver solutions that work.",
+    "email": "admin@xqtechsolutions.com",
+    "foundingLocation": "Palakkad, Kerala, India",
+    "knowsAbout": ["Mobile App Development", "Flutter", "Firebase", "Web Development"],
+    "sameAs": []
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "XQ Tech Solutions",
+    "url": "https://xqtechsolutions.in",
+    "email": "admin@xqtechsolutions.com",
+    "description": "Mobile app development company specializing in Flutter apps for local businesses in India.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Palakkad",
+      "addressRegion": "Kerala",
+      "addressCountry": "IN"
+    },
+    "priceRange": "$$",
+    "areaServed": {
+      "@type": "Country",
+      "name": "India"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "XQ Tech Solutions",
+    "url": "https://xqtechsolutions.in",
+    "description": "Mobile app development company based in Palakkad, Kerala."
+  }
+]);
 ---
 
 <BaseLayout
-  title="XQ Tech Solutions - Mobile App Development Company"
-  description="XQ Tech Solutions builds powerful mobile applications for local businesses across India. From livestock management to e-commerce, we deliver solutions that work."
+  title="XQ Tech Solutions - Mobile App Development Company in Palakkad, Kerala"
+  description="XQ Tech Solutions builds powerful mobile applications for local businesses across India. From livestock management to e-commerce, we deliver Flutter apps that work."
+  keywords="XQ Tech Solutions, mobile app development, Flutter app development, app development company India, mobile app development Palakkad, Kerala app developer, livestock management app, local business app, Paal Pannai, MyChoice Palakkad"
+  schema={schema}
 >
   <Header variant="dark" />
 
@@ -110,6 +153,32 @@ import "../styles/global.css";
                 Privacy Policy
               </a>
               <a href="/terms/paal-pannai" class="text-accent hover:underline">
+                Terms & Conditions
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- MyChoice Palakkad -->
+        <div class="bg-white rounded-xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow">
+          <div class="bg-gradient-to-br from-purple-500 to-pink-600 p-8 text-white">
+            <svg class="w-10 h-10 mb-3 opacity-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
+            <h3 class="text-xl font-bold">MyChoice Palakkad</h3>
+            <p class="text-white/80 text-sm mt-1">Local Fashion Discovery</p>
+          </div>
+          <div class="p-6">
+            <p class="text-muted text-sm mb-4">
+              Discover local clothing shops, browse products, contact via
+              WhatsApp, earn cashback rewards, and leave reviews — all in
+              one place.
+            </p>
+            <div class="flex gap-3 text-xs">
+              <a href="/privacy-policy/mychoice-palakkad" class="text-accent hover:underline">
+                Privacy Policy
+              </a>
+              <a href="/terms/mychoice-palakkad" class="text-accent hover:underline">
                 Terms & Conditions
               </a>
             </div>
