@@ -1,0 +1,1019 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import "../../styles/global.css";
+
+const shopName = "Eda Mone Men's Store";
+const shopAddress = "RV Pudur, Kozhinjampara, Opposite Palli Mokku, Palakkad, Kerala 678554";
+const whatsappNumber = "919544483868";
+const callNumber = "9526735749";
+const shopNowUrl = "https://palakkad-dresses.web.app/";
+const siteUrl = "https://mychoicepalakkad.in";
+
+const imgBase = "/images/shops/eda-mone-mens-store";
+
+const products = [
+  { name: "Formal Shirts", tag: "OFFICE", num: "01", grad: "from-indigo-600 via-indigo-800 to-slate-900", img: `${imgBase}/product-1.jpg` },
+  { name: "Casual Tees", tag: "EVERYDAY", num: "02", grad: "from-orange-500 via-red-500 to-rose-600", img: `${imgBase}/product-2.jpg` },
+  { name: "Kurta Edit", tag: "ETHNIC", num: "03", grad: "from-emerald-500 via-teal-600 to-cyan-700", img: `${imgBase}/product-3.jpg` },
+  { name: "Denim Fit", tag: "CASUAL", num: "04", grad: "from-blue-500 via-blue-700 to-indigo-900", img: `${imgBase}/product-4.jpg` },
+  { name: "Suits", tag: "PREMIUM", num: "05", grad: "from-amber-500 via-orange-600 to-rose-600", img: `${imgBase}/product-5.jpg` },
+  { name: "Accessories", tag: "FINISH", num: "06", grad: "from-fuchsia-500 via-purple-600 to-indigo-800", img: `${imgBase}/product-6.jpg` },
+];
+
+const localBusinessSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ClothingStore",
+  "name": shopName,
+  "image": `${siteUrl}/images/shops/eda-mone-mens-store/logo.jpeg`,
+  "description": "Eda Mone Men's Store — premium men's clothing, formal wear, casual wear, ethnic wear, and accessories in Kozhinjampara, Palakkad.",
+  "url": `${siteUrl}/shops/eda-mone-mens-store`,
+  "telephone": `+91${callNumber}`,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "RV Pudur, Opposite Palli Mokku",
+    "addressLocality": "Kozhinjampara",
+    "addressRegion": "Kerala",
+    "postalCode": "678554",
+    "addressCountry": "IN"
+  },
+  "areaServed": { "@type": "City", "name": "Palakkad" },
+  "priceRange": "₹₹",
+  "sameAs": [`https://wa.me/${whatsappNumber}`]
+});
+
+const mapQuery = encodeURIComponent(`${shopName}, ${shopAddress}`);
+---
+
+<BaseLayout
+  title="Eda Mone Men's Store - Premium Men's Clothing in Kozhinjampara, Palakkad"
+  description="Shop premium men's clothing at Eda Mone Men's Store in Kozhinjampara, Palakkad. Formal shirts, ethnic wear, suits, casual wear & accessories."
+  keywords="eda mone mens store, mens clothing palakkad, mens store kozhinjampara, mens wear palakkad, formal shirts palakkad, suits palakkad, kurta palakkad"
+  schema={localBusinessSchema}
+>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+    :root {
+      --ink: #0b0a09;
+      --ink-2: #141210;
+      --cream: #f5f0e6;
+      --accent-1: #ff4d15;
+      --accent-2: #ff2468;
+      --accent-3: #8b5cff;
+      --lime: #d4ff33;
+    }
+    html, body {
+      background: var(--ink);
+      color: var(--cream);
+      overflow-x: hidden;
+      font-family: "Bricolage Grotesque", "Inter", system-ui, sans-serif;
+      font-optical-sizing: auto;
+    }
+    .display {
+      font-family: "Bricolage Grotesque", serif;
+      font-weight: 700;
+      font-optical-sizing: auto;
+      font-variation-settings: "opsz" 96;
+      letter-spacing: -0.035em;
+      line-height: 0.92;
+    }
+    .mono { font-family: "JetBrains Mono", monospace; }
+
+    .lenis.lenis-smooth { scroll-behavior: auto !important; }
+    .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+
+    .mesh-bg { position: relative; background: var(--ink); }
+    .mesh-bg::after {
+      content: "";
+      position: absolute; inset: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+      background-size: 200px;
+      mix-blend-mode: overlay;
+      opacity: 0.6;
+    }
+
+    .orb {
+      position: absolute; border-radius: 50%;
+      filter: blur(100px); opacity: 0.5;
+      will-change: transform;
+      pointer-events: none;
+    }
+    @media (max-width: 768px) { .orb { filter: blur(60px); opacity: 0.35; } }
+
+    .grad-text {
+      background: linear-gradient(120deg, var(--accent-1) 0%, var(--accent-2) 45%, var(--accent-3) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-style: italic;
+    }
+
+    .glass {
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .reveal-line { display: block; overflow: hidden; }
+    .reveal-inner { display: inline-block; transform: translateY(110%); will-change: transform; }
+
+    .char { display: inline-block; transform: translateY(120%) rotate(6deg); opacity: 0; will-change: transform, opacity; }
+
+    @keyframes marquee { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
+    .marquee-track { animation: marquee 40s linear infinite; }
+
+    @keyframes orb-drift {
+      0%, 100% { transform: translate3d(0,0,0) scale(1); }
+      33% { transform: translate3d(4vw, -3vh, 0) scale(1.08); }
+      66% { transform: translate3d(-3vw, 5vh, 0) scale(0.94); }
+    }
+    .orb-anim { animation: orb-drift 22s ease-in-out infinite; }
+
+    @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+    .pulse-dot { animation: pulse-dot 1.8s ease-in-out infinite; }
+
+    .card-3d {
+      transform-style: preserve-3d;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform;
+    }
+    .persp { perspective: 1600px; perspective-origin: 50% 50%; }
+
+    /* Product strip mobile snap */
+    @media (max-width: 1023px) {
+      .mobile-snap {
+        display: flex; gap: 1rem;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding: 0 1.25rem 0.5rem;
+        scrollbar-width: none;
+      }
+      .mobile-snap::-webkit-scrollbar { display: none; }
+      .mobile-snap > * { scroll-snap-align: start; flex: 0 0 80%; }
+    }
+
+    /* Fine border */
+    .hair { border-color: rgba(255,255,255,0.08); }
+  </style>
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 py-4">
+    <nav class="max-w-[1400px] mx-auto flex items-center justify-between gap-3">
+      <a href="/shops/eda-mone-mens-store" class="flex items-center gap-2.5 glass rounded-full pl-1.5 pr-4 py-1.5">
+        <img
+          src="/images/shops/eda-mone-mens-store/logo.jpeg"
+          alt="Eda Mone Men's Store logo"
+          class="w-9 h-9 rounded-full object-cover"
+        />
+        <div class="leading-tight">
+          <div class="text-sm font-semibold text-white tracking-tight">Eda Mone</div>
+          <div class="mono text-[9px] uppercase tracking-[0.2em] text-white/50">Men's Store</div>
+        </div>
+      </a>
+      <div class="hidden md:flex items-center gap-1 glass rounded-full px-1.5 py-1.5 text-sm">
+        <a href="#story" class="px-4 py-2 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-colors">Story</a>
+        <a href="#services" class="px-4 py-2 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-colors">Services</a>
+        <a href="#collection" class="px-4 py-2 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-colors">Shop</a>
+        <a href="#visit" class="px-4 py-2 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-colors">Visit</a>
+      </div>
+      <a
+        href={shopNowUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="magnetic group inline-flex items-center gap-1.5 bg-white text-black text-xs md:text-sm font-semibold px-4 md:px-5 py-3 rounded-full hover:bg-[var(--accent-1)] hover:text-white transition-colors"
+        data-hover
+      >
+        <span>Shop</span>
+        <svg class="w-3 h-3 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section id="hero" class="relative min-h-[100svh] overflow-hidden mesh-bg">
+    <div class="orb orb-anim" style="width: 55vmin; height: 55vmin; background: var(--accent-1); top: -8%; left: -5%;"></div>
+    <div class="orb orb-anim" style="width: 45vmin; height: 45vmin; background: var(--accent-2); top: 10%; right: -10%; animation-delay: -8s;"></div>
+    <div class="orb orb-anim" style="width: 40vmin; height: 40vmin; background: var(--accent-3); bottom: -10%; left: 30%; animation-delay: -14s;"></div>
+
+    <div class="relative z-10 max-w-[1400px] mx-auto px-4 md:px-8 pt-28 md:pt-36 pb-14 md:pb-20 min-h-[100svh] flex flex-col justify-center">
+      <div class="grid lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+        <!-- Text -->
+        <div class="lg:col-span-7 xl:col-span-8">
+          <div class="reveal-line mb-5 md:mb-8">
+            <div class="reveal-inner" data-reveal>
+              <div class="inline-flex items-center gap-2 glass rounded-full px-3.5 py-2 text-[11px] uppercase tracking-[0.22em] text-white/80">
+                <span class="w-1.5 h-1.5 rounded-full bg-[var(--lime)] pulse-dot"></span>
+                <span class="mono">Open · Kozhinjampara</span>
+              </div>
+            </div>
+          </div>
+
+          <h1
+            id="hero-title"
+            class="display text-white"
+            style="font-size: clamp(2.9rem, 11vw, 10.5rem);"
+          >
+            <span class="block"><span class="hero-word inline-block">Dressed</span></span>
+            <span class="block"><span class="hero-word inline-block">to the</span> <span class="grad-text hero-italic inline-block">nines.</span></span>
+          </h1>
+
+          <div class="max-w-xl mt-6 md:mt-10 reveal-line">
+            <div class="reveal-inner" data-reveal data-reveal-delay="0.3">
+              <p class="text-base md:text-xl text-white/70 leading-relaxed">
+                Eda Mone Men's Store — a curated menswear edit in Palakkad.
+                Formal, ethnic, casual, and accessories. Shop in store or online.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-3 mt-8 md:mt-12">
+            <div class="reveal-line">
+              <div class="reveal-inner" data-reveal data-reveal-delay="0.5">
+                <a
+                  href={shopNowUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="magnetic group inline-flex items-center gap-3 bg-white text-black font-semibold px-6 md:px-7 py-3.5 md:py-4 rounded-full hover:bg-[var(--accent-1)] hover:text-white transition-colors text-sm md:text-base"
+                  data-hover
+                >
+                  Shop Collection
+                  <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-black text-white group-hover:bg-white group-hover:text-[var(--accent-1)] transition-colors">
+                    <svg class="w-3 h-3 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                  </span>
+                </a>
+              </div>
+            </div>
+            <div class="reveal-line">
+              <div class="reveal-inner" data-reveal data-reveal-delay="0.6">
+                <a
+                  href="#visit"
+                  class="glass inline-flex items-center gap-2 text-white font-medium px-6 py-3.5 md:py-4 rounded-full hover:bg-white/10 transition-colors text-sm md:text-base"
+                >
+                  Visit Store
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3D Card Stack -->
+        <div class="lg:col-span-5 xl:col-span-4 persp">
+          <div id="card-stack" class="relative w-full max-w-[360px] mx-auto aspect-[4/5] lg:aspect-[3/4]">
+            <!-- Back card: product gradient -->
+            <div
+              class="card-stack-item absolute inset-0 rounded-[28px] overflow-hidden border border-white/10"
+              data-depth="-60"
+              data-rotate-y="-14"
+              data-rotate-x="10"
+              data-translate-x="30"
+              data-translate-y="20"
+            >
+              <div class="absolute inset-0 bg-gradient-to-br from-[var(--accent-3)] via-[var(--accent-2)] to-[var(--accent-1)]"></div>
+              <img src={`${imgBase}/hero-1.jpg`} alt="" loading="lazy" onerror="this.remove()" class="absolute inset-0 w-full h-full object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
+              <div class="absolute bottom-5 left-5 text-xs uppercase tracking-[0.25em] text-white/90 mono">03 / Ethnic</div>
+              <div class="absolute top-5 right-5 w-10 h-10 rounded-full glass flex items-center justify-center text-white text-sm">✦</div>
+            </div>
+
+            <!-- Middle card: typography -->
+            <div
+              class="card-stack-item absolute inset-0 rounded-[28px] overflow-hidden border border-white/10 glass"
+              data-depth="-30"
+              data-rotate-y="-6"
+              data-rotate-x="4"
+              data-translate-x="-10"
+              data-translate-y="-20"
+            >
+              <div class="absolute inset-0 flex items-center justify-center p-6 bg-gradient-to-br from-[var(--ink-2)] to-[var(--ink)]">
+                <div class="text-center">
+                  <div class="mono text-[10px] uppercase tracking-[0.3em] text-white/50 mb-3">Est. Palakkad</div>
+                  <div class="display grad-text" style="font-size: clamp(2.4rem, 4vw, 3.8rem);">Eda<br/>Mone.</div>
+                  <div class="mono text-[10px] uppercase tracking-[0.3em] text-white/40 mt-4">Men's Store</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Front card: logo -->
+            <div
+              class="card-stack-item absolute inset-0 rounded-[28px] overflow-hidden border-2 border-white/15 shadow-2xl shadow-black/50"
+              data-depth="20"
+              data-rotate-y="6"
+              data-rotate-x="-3"
+              data-translate-x="15"
+              data-translate-y="40"
+            >
+              <img src="/images/shops/eda-mone-mens-store/logo.jpeg" alt="Eda Mone logo" class="w-full h-full object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+              <div class="absolute bottom-5 left-5 right-5 flex items-end justify-between">
+                <div>
+                  <div class="mono text-[10px] uppercase tracking-[0.3em] text-white/70">Premium</div>
+                  <div class="text-white font-semibold text-lg mt-1">Men's Store</div>
+                </div>
+                <div class="w-9 h-9 rounded-full bg-[var(--lime)] text-black flex items-center justify-center">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="absolute bottom-5 md:bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2 text-white/40 mono text-[10px] uppercase tracking-[0.3em]">
+        <span>Scroll</span>
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marquee -->
+  <section class="relative bg-[var(--ink)] border-y hair py-4 md:py-5 overflow-hidden">
+    <div class="marquee-track whitespace-nowrap flex items-center">
+      {Array.from({ length: 3 }).map(() => (
+        <div class="flex items-center gap-8 md:gap-12 pr-8 md:pr-12 display text-3xl md:text-5xl text-white/15">
+          <span>Formal</span>
+          <span class="text-[var(--accent-1)]">✦</span>
+          <span class="italic">Ethnic</span>
+          <span class="text-[var(--accent-2)]">✦</span>
+          <span>Casual</span>
+          <span class="text-[var(--accent-3)]">✦</span>
+          <span class="italic">Premium</span>
+          <span class="text-[var(--lime)]">✦</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section id="story" class="relative py-24 md:py-40 px-4 md:px-8 overflow-hidden">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        <div class="lg:col-span-7 order-2 lg:order-1">
+          <div class="mono text-[11px] uppercase tracking-[0.3em] text-[var(--accent-1)] mb-5 md:mb-7 reveal-text">— The Story</div>
+          <h2 class="display text-white mb-6 md:mb-10" style="font-size: clamp(2.2rem, 6vw, 4.8rem);">
+            <span class="reveal-text">Built for men</span><br/>
+            <span class="reveal-text grad-text">with taste.</span>
+          </h2>
+          <div class="space-y-5 text-white/70 text-base md:text-lg leading-relaxed max-w-xl">
+            <p class="reveal-text">
+              Every piece at Eda Mone is handpicked for fit, fabric, and finish.
+              A tight edit so you can build a rotation you'll actually wear.
+            </p>
+            <p class="reveal-text">
+              Drop in at our Kozhinjampara store or shop the full collection
+              online. Either way, expect quality that matches your energy.
+            </p>
+          </div>
+          <div class="mt-8 md:mt-12 reveal-text">
+            <a href={shopNowUrl} target="_blank" rel="noopener noreferrer" class="magnetic inline-flex items-center gap-2 bg-white text-black font-semibold px-6 py-3 rounded-full hover:bg-[var(--accent-1)] hover:text-white transition-colors text-sm" data-hover>
+              Explore Collection →
+            </a>
+          </div>
+        </div>
+
+        <!-- Stacked parallax cards -->
+        <div class="lg:col-span-5 order-1 lg:order-2 relative h-[420px] md:h-[560px]">
+          <div data-parallax="0.12" class="absolute top-0 right-0 w-40 md:w-56 aspect-[3/4] rounded-3xl overflow-hidden border border-white/10">
+            <div class="absolute inset-0 bg-gradient-to-br from-[var(--accent-2)] via-[var(--accent-3)] to-indigo-900"></div>
+            <img src={`${imgBase}/story-1.jpg`} alt="" loading="lazy" onerror="this.remove()" class="absolute inset-0 w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+            <div class="absolute bottom-4 left-4 mono text-[10px] uppercase tracking-[0.25em] text-white/90">01 · Formal</div>
+          </div>
+          <div data-parallax="-0.18" class="absolute top-20 md:top-28 left-0 w-48 md:w-72 aspect-[3/4] rounded-3xl overflow-hidden border border-white/10">
+            <div class="absolute inset-0 bg-gradient-to-br from-[var(--accent-1)] via-rose-600 to-purple-900"></div>
+            <img src={`${imgBase}/story-2.jpg`} alt="" loading="lazy" onerror="this.remove()" class="absolute inset-0 w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+            <div class="absolute bottom-4 left-4 mono text-[10px] uppercase tracking-[0.25em] text-white/90">02 · Ethnic</div>
+          </div>
+          <div data-parallax="0.24" class="absolute bottom-0 right-4 md:right-6 w-40 md:w-52 aspect-[3/4] rounded-3xl overflow-hidden border border-white/10">
+            <div class="absolute inset-0 bg-gradient-to-br from-emerald-500 via-teal-700 to-slate-900"></div>
+            <img src={`${imgBase}/story-3.jpg`} alt="" loading="lazy" onerror="this.remove()" class="absolute inset-0 w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+            <div class="absolute bottom-4 left-4 mono text-[10px] uppercase tracking-[0.25em] text-white/90">03 · Casual</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="relative py-24 md:py-36 px-4 md:px-8 bg-[var(--ink)]">
+    <div class="relative max-w-[1200px] mx-auto">
+      <div class="max-w-2xl mb-16 md:mb-28">
+        <div class="mono text-[11px] uppercase tracking-[0.3em] text-[var(--accent-1)] mb-5 reveal-text">— What We Do</div>
+        <h2 class="display text-white" style="font-size: clamp(2.2rem, 6vw, 4.8rem);">
+          <span class="reveal-text">More than</span>
+          <span class="reveal-text grad-text">a store.</span>
+        </h2>
+        <p class="text-white/60 text-base md:text-lg mt-6 leading-relaxed reveal-text">
+          From single pieces to bulk orders, custom prints to coordinated dress
+          codes — we stitch solutions to fit your need.
+        </p>
+      </div>
+
+      <!-- Alternating rows -->
+      <div class="space-y-24 md:space-y-32">
+        <!-- 01 · Men's & Kids -->
+        <div class="service-row grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+          <div class="service-text">
+            <div class="flex items-baseline gap-4 mb-6">
+              <div class="display text-white/15" style="font-size: clamp(3.5rem, 8vw, 6rem); line-height: 1;">01</div>
+              <div class="mono text-[11px] uppercase tracking-[0.3em] text-[var(--accent-1)]">— Core</div>
+            </div>
+            <h3 class="display text-white mb-5" style="font-size: clamp(1.9rem, 4vw, 3rem);">
+              Men's & Kids<br/>
+              <span class="grad-text">clothing edit.</span>
+            </h3>
+            <p class="text-white/65 text-base md:text-lg leading-relaxed max-w-lg">
+              Handpicked menswear and playful kidswear — formals, ethnic wear,
+              casual fits, and party dresses. One store, whole family.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-6">
+              <span class="mono text-[10px] uppercase tracking-[0.25em] px-3 py-1.5 rounded-full bg-white/5 border hair text-white/80">Men's</span>
+              <span class="mono text-[10px] uppercase tracking-[0.25em] px-3 py-1.5 rounded-full bg-white/5 border hair text-white/80">Kids</span>
+              <span class="mono text-[10px] uppercase tracking-[0.25em] px-3 py-1.5 rounded-full bg-white/5 border hair text-white/80">Formal</span>
+              <span class="mono text-[10px] uppercase tracking-[0.25em] px-3 py-1.5 rounded-full bg-white/5 border hair text-white/80">Ethnic</span>
+            </div>
+          </div>
+          <div class="service-visual aspect-[4/3] rounded-3xl overflow-hidden border hair relative">
+            <div class="absolute inset-0 bg-gradient-to-br from-[var(--accent-1)] via-rose-600 to-[var(--accent-3)]"></div>
+            <img src={`${imgBase}/service-01.jpg`} alt="" loading="lazy" onerror="this.remove()" class="absolute inset-0 w-full h-full object-cover" />
+            <div class="absolute top-5 left-5 mono text-[10px] uppercase tracking-[0.3em] text-white/80 bg-black/20 backdrop-blur px-2 py-1 rounded-full">01</div>
+          </div>
+        </div>
+
+        <!-- 02 · Retail & Wholesale (inverted) -->
+        <div class="service-row grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+          <div class="service-visual md:order-2 aspect-[4/3] rounded-3xl overflow-hidden border hair relative">
+            <div class="absolute inset-0 bg-gradient-to-br from-indigo-600 via-blue-700 to-slate-900"></div>
+            <img src={`${imgBase}/service-02.jpg`} alt="" loading="lazy" onerror="this.remove()" class="absolute inset-0 w-full h-full object-cover" />
+            <div class="absolute top-5 left-5 mono text-[10px] uppercase tracking-[0.3em] text-white/80 bg-black/20 backdrop-blur px-2 py-1 rounded-full">02</div>
+          </div>
+          <div class="service-text md:order-1">
+            <div class="flex items-baseline gap-4 mb-6">
+              <div class="display text-white/15" style="font-size: clamp(3.5rem, 8vw, 6rem); line-height: 1;">02</div>
+              <div class="mono text-[11px] uppercase tracking-[0.3em] text-[var(--accent-2)]">— Retail & Wholesale</div>
+            </div>
+            <h3 class="display text-white mb-5" style="font-size: clamp(1.9rem, 4vw, 3rem);">
+              Single pieces<br/>
+              <span class="grad-text">or bulk orders.</span>
+            </h3>
+            <p class="text-white/65 text-base md:text-lg leading-relaxed max-w-lg">
+              Walk in for one-off shopping or order in bulk for shops, events,
+              and resellers. Flexible pricing, fast turnaround.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-6">
+              <span class="mono text-[10px] uppercase tracking-[0.25em] px-3 py-1.5 rounded-full bg-white/5 border hair text-white/80">B2C</span>
+              <span class="mono text-[10px] uppercase tracking-[0.25em] px-3 py-1.5 rounded-full bg-white/5 border hair text-white/80">B2B</span>
+              <span class="mono text-[10px] uppercase tracking-[0.25em] px-3 py-1.5 rounded-full bg-white/5 border hair text-white/80">Resellers</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 03 · Custom Prints -->
+        <div class="service-row grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+          <div class="service-text">
+            <div class="flex items-baseline gap-4 mb-6">
+              <div class="display text-white/15" style="font-size: clamp(3.5rem, 8vw, 6rem); line-height: 1;">03</div>
+              <div class="mono text-[11px] uppercase tracking-[0.3em] text-[var(--lime)]">— Custom Prints</div>
+            </div>
+            <h3 class="display text-white mb-5" style="font-size: clamp(1.9rem, 4vw, 3rem);">
+              Your logo,<br/>
+              <span class="grad-text">your design.</span>
+            </h3>
+            <p class="text-white/65 text-base md:text-lg leading-relaxed max-w-lg">
+              Screen-print, embroidery, and vinyl on tees, polos, and kurtas.
+              Any artwork — perfectly stitched.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-6">
+              <span class="mono text-[10px] uppercase tracking-[0.25em] px-3 py-1.5 rounded-full bg-white/5 border hair text-white/80">Screen Print</span>
+              <span class="mono text-[10px] uppercase tracking-[0.25em] px-3 py-1.5 rounded-full bg-white/5 border hair text-white/80">Embroidery</span>
+              <span class="mono text-[10px] uppercase tracking-[0.25em] px-3 py-1.5 rounded-full bg-white/5 border hair text-white/80">Vinyl</span>
+            </div>
+          </div>
+          <div class="service-visual aspect-[4/3] rounded-3xl overflow-hidden border hair relative">
+            <div class="absolute inset-0 bg-gradient-to-br from-[var(--lime)] via-emerald-500 to-teal-700"></div>
+            <img src={`${imgBase}/service-03.jpg`} alt="" loading="lazy" onerror="this.remove()" class="absolute inset-0 w-full h-full object-cover" />
+            <div class="absolute top-5 left-5 mono text-[10px] uppercase tracking-[0.3em] text-white/90 bg-black/20 backdrop-blur px-2 py-1 rounded-full">03</div>
+          </div>
+        </div>
+
+        <!-- 04 · Uniforms & Dress Codes (inverted) -->
+        <div class="service-row grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+          <div class="service-visual md:order-2 aspect-[4/3] rounded-3xl overflow-hidden border hair relative">
+            <div class="absolute inset-0 bg-gradient-to-br from-amber-500 via-orange-600 to-rose-600"></div>
+            <img src={`${imgBase}/service-04.jpg`} alt="" loading="lazy" onerror="this.remove()" class="absolute inset-0 w-full h-full object-cover" />
+            <div class="absolute top-5 left-5 mono text-[10px] uppercase tracking-[0.3em] text-white/80 bg-black/20 backdrop-blur px-2 py-1 rounded-full">04</div>
+          </div>
+          <div class="service-text md:order-1">
+            <div class="flex items-baseline gap-4 mb-6">
+              <div class="display text-white/15" style="font-size: clamp(3.5rem, 8vw, 6rem); line-height: 1;">04</div>
+              <div class="mono text-[11px] uppercase tracking-[0.3em] text-[var(--accent-3)]">— Dress Codes</div>
+            </div>
+            <h3 class="display text-white mb-5" style="font-size: clamp(1.9rem, 4vw, 3rem);">
+              Uniforms &<br/>
+              <span class="grad-text">dress codes.</span>
+            </h3>
+            <p class="text-white/65 text-base md:text-lg leading-relaxed max-w-lg">
+              Coordinated outfits for offices, schools, teams, and weddings.
+              Fabric, fit, and color — handled end to end.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-6">
+              <span class="mono text-[10px] uppercase tracking-[0.25em] px-3 py-1.5 rounded-full bg-white/5 border hair text-white/80">Corporate</span>
+              <span class="mono text-[10px] uppercase tracking-[0.25em] px-3 py-1.5 rounded-full bg-white/5 border hair text-white/80">Schools</span>
+              <span class="mono text-[10px] uppercase tracking-[0.25em] px-3 py-1.5 rounded-full bg-white/5 border hair text-white/80">Events</span>
+              <span class="mono text-[10px] uppercase tracking-[0.25em] px-3 py-1.5 rounded-full bg-white/5 border hair text-white/80">Weddings</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 05 · Custom Bulk Orders -->
+        <div class="service-row grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+          <div class="service-text">
+            <div class="flex items-baseline gap-4 mb-6">
+              <div class="display text-white/15" style="font-size: clamp(3.5rem, 8vw, 6rem); line-height: 1;">05</div>
+              <div class="mono text-[11px] uppercase tracking-[0.3em] text-[var(--accent-1)]">— Bulk Orders</div>
+            </div>
+            <h3 class="display text-white mb-5" style="font-size: clamp(1.9rem, 4vw, 3rem);">
+              Got a<br/>
+              <span class="grad-text">bulk order?</span>
+            </h3>
+            <p class="text-white/65 text-base md:text-lg leading-relaxed max-w-lg mb-6">
+              Event merch, team kits, festive gifting — tell us what you need
+              and we'll put together a quote on WhatsApp.
+            </p>
+            <a
+              href={`https://wa.me/${whatsappNumber}?text=Hi%2C%20I%20want%20a%20bulk%20custom%20order%20from%20Eda%20Mone`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-3 bg-white text-black font-semibold px-6 py-3.5 rounded-full hover:bg-[var(--accent-1)] hover:text-white transition-colors text-sm"
+            >
+              Chat on WhatsApp
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+          </div>
+          <div class="service-visual aspect-[4/3] rounded-3xl overflow-hidden border hair relative">
+            <div class="absolute inset-0 bg-gradient-to-br from-[var(--accent-3)] via-fuchsia-600 to-[var(--accent-2)]"></div>
+            <img src={`${imgBase}/service-05.jpg`} alt="" loading="lazy" onerror="this.remove()" class="absolute inset-0 w-full h-full object-cover" />
+            <div class="absolute top-5 left-5 mono text-[10px] uppercase tracking-[0.3em] text-white/80 bg-black/20 backdrop-blur px-2 py-1 rounded-full">05</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Collection: horizontal on desktop, snap on mobile -->
+  <section id="collection" class="relative bg-[var(--ink-2)] overflow-hidden py-20 md:py-0">
+    <div class="px-4 md:px-8 md:pt-32">
+      <div class="max-w-[1400px] mx-auto flex items-end justify-between flex-wrap gap-4 mb-10 md:mb-14">
+        <div>
+          <div class="mono text-[11px] uppercase tracking-[0.3em] text-[var(--accent-1)] mb-5 reveal-text">— Collection</div>
+          <h2 class="display text-white" style="font-size: clamp(2.2rem, 6vw, 4.8rem);">
+            <span class="reveal-text">The full</span>
+            <span class="reveal-text grad-text">rotation.</span>
+          </h2>
+        </div>
+        <div class="mono text-[11px] uppercase tracking-[0.3em] text-white/40 reveal-text hidden lg:block">
+          Scroll →
+        </div>
+      </div>
+    </div>
+
+    <!-- Desktop: pinned horizontal scroll -->
+    <div id="hscroll-outer" class="relative hidden lg:block">
+      <div id="hscroll-pin" class="h-[100vh] flex items-center overflow-hidden">
+        <div id="hscroll-track" class="flex items-center gap-7 pl-8 pr-8 will-change-transform">
+          {products.map((product) => (
+            <a
+              href={shopNowUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex-shrink-0 w-[32vw] xl:w-[26vw] aspect-[3/4] relative group card-3d"
+              data-tilt
+              data-hover
+            >
+              <div class={`absolute inset-0 rounded-[28px] overflow-hidden bg-gradient-to-br ${product.grad} border border-white/10`}>
+                <img src={product.img} alt="" loading="lazy" onerror="this.remove()" class="absolute inset-0 w-full h-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+              </div>
+              <div class="absolute top-5 left-5 glass rounded-full px-3 py-1.5 mono text-[10px] uppercase tracking-[0.25em] text-white">
+                {product.tag}
+              </div>
+              <div class="absolute top-5 right-5 glass rounded-full w-9 h-9 flex items-center justify-center mono text-xs text-white">
+                {product.num}
+              </div>
+              <div class="absolute bottom-7 left-7 right-7 text-white">
+                <div class="display mb-3" style="font-size: clamp(1.8rem, 3vw, 2.8rem);">{product.name}</div>
+                <div class="inline-flex items-center gap-2 mono text-[10px] uppercase tracking-[0.25em] opacity-70 group-hover:opacity-100 group-hover:gap-3 transition-all">
+                  Shop now
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </div>
+              </div>
+            </a>
+          ))}
+          <div class="flex-shrink-0 w-[32vw] xl:w-[26vw] aspect-[3/4] relative rounded-[28px] overflow-hidden glass flex flex-col items-center justify-center text-center p-10">
+            <div class="text-5xl mb-4">✦</div>
+            <div class="display mb-5" style="font-size: 2.4rem;">Shop the <span class="grad-text">full edit.</span></div>
+            <a href={shopNowUrl} target="_blank" rel="noopener noreferrer" class="magnetic inline-flex items-center gap-2 bg-white text-black font-semibold px-6 py-3 rounded-full text-sm mt-4" data-hover>
+              Browse All →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile: horizontal snap scroll -->
+    <div class="lg:hidden mobile-snap">
+      {products.map((product) => (
+        <a
+          href={shopNowUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="relative aspect-[3/4] rounded-3xl overflow-hidden"
+        >
+          <div class={`absolute inset-0 bg-gradient-to-br ${product.grad} border border-white/10`}></div>
+          <img src={product.img} alt="" loading="lazy" onerror="this.remove()" class="absolute inset-0 w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+          <div class="absolute top-4 left-4 glass rounded-full px-2.5 py-1 mono text-[9px] uppercase tracking-[0.25em] text-white">{product.tag}</div>
+          <div class="absolute top-4 right-4 glass rounded-full w-8 h-8 flex items-center justify-center mono text-[10px] text-white">{product.num}</div>
+          <div class="absolute bottom-5 left-5 right-5 text-white">
+            <div class="display text-2xl mb-2">{product.name}</div>
+            <div class="mono text-[10px] uppercase tracking-[0.25em] opacity-70 inline-flex items-center gap-1.5">Shop now →</div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative min-h-[85svh] flex items-center overflow-hidden mesh-bg py-20 md:py-32 px-4 md:px-8">
+    <div class="orb orb-anim" style="width: 55vmin; height: 55vmin; background: var(--accent-2); top: 10%; left: -8%;"></div>
+    <div class="orb orb-anim" style="width: 50vmin; height: 50vmin; background: var(--accent-3); bottom: -10%; right: -10%; animation-delay: -10s;"></div>
+
+    <div class="relative z-10 max-w-5xl mx-auto text-center">
+      <div class="mono text-[11px] uppercase tracking-[0.3em] text-[var(--accent-1)] mb-6 reveal-text">— Ready?</div>
+      <h2 class="display text-white mb-6 md:mb-10" style="font-size: clamp(2.8rem, 10vw, 9rem);">
+        <span class="block reveal-text">Dress like</span>
+        <span class="block grad-text reveal-text">you mean it.</span>
+      </h2>
+      <p class="text-white/60 text-base md:text-xl max-w-xl mx-auto mb-8 md:mb-12 reveal-text">
+        Full collection online. Earn cashback with MyChoice rewards.
+      </p>
+      <div class="flex flex-wrap justify-center gap-3 reveal-text">
+        <a
+          href={shopNowUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="magnetic group inline-flex items-center gap-3 bg-white text-black font-semibold px-7 md:px-8 py-4 rounded-full hover:bg-[var(--accent-1)] hover:text-white transition-colors"
+          data-hover
+        >
+          Shop Now
+          <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-black text-white group-hover:bg-white group-hover:text-[var(--accent-1)] transition-colors">
+            <svg class="w-3 h-3 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </span>
+        </a>
+        <a
+          href={`https://wa.me/${whatsappNumber}?text=Hi%2C%20I'm%20interested%20in%20Eda%20Mone%20Men's%20Store`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="glass inline-flex items-center gap-2 text-white font-semibold px-7 md:px-8 py-4 rounded-full hover:bg-white/10 transition-colors"
+        >
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visit -->
+  <section id="visit" class="relative py-24 md:py-40 px-4 md:px-8 bg-[var(--ink)]">
+    <div class="max-w-[1400px] mx-auto">
+      <div class="mb-12 md:mb-16">
+        <div class="mono text-[11px] uppercase tracking-[0.3em] text-[var(--accent-1)] mb-5 reveal-text">— Find Us</div>
+        <h2 class="display text-white" style="font-size: clamp(2.2rem, 6vw, 4.8rem);">
+          <span class="reveal-text">Pull up to</span>
+          <span class="reveal-text grad-text">the store.</span>
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-5 gap-4 md:gap-5 persp">
+        <div class="md:col-span-2 flex flex-col gap-4">
+          <a href={`https://maps.google.com/?q=${mapQuery}`} target="_blank" rel="noopener noreferrer" class="card-3d group block glass rounded-3xl p-6 md:p-7 hover:bg-white/10 transition-colors" data-tilt data-hover>
+            <div class="mono text-[10px] uppercase tracking-[0.25em] text-[var(--accent-1)] mb-3">Address</div>
+            <p class="display text-lg md:text-2xl leading-tight text-white mb-4">{shopAddress}</p>
+            <div class="inline-flex items-center gap-2 mono text-[10px] uppercase tracking-[0.25em] text-white/60 group-hover:text-white group-hover:gap-3 transition-all">
+              Directions →
+            </div>
+          </a>
+
+          <a href={`tel:+91${callNumber}`} class="card-3d block glass rounded-3xl p-6 md:p-7 hover:bg-white/10 transition-colors" data-tilt data-hover>
+            <div class="mono text-[10px] uppercase tracking-[0.25em] text-[var(--accent-2)] mb-3">Call</div>
+            <div class="display text-xl md:text-3xl text-white">+91 {callNumber}</div>
+          </a>
+
+          <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer" class="card-3d block glass rounded-3xl p-6 md:p-7 hover:bg-white/10 transition-colors" data-tilt data-hover>
+            <div class="mono text-[10px] uppercase tracking-[0.25em] text-[var(--accent-3)] mb-3">WhatsApp</div>
+            <div class="display text-xl md:text-3xl text-white">+91 95444 83868</div>
+          </a>
+        </div>
+
+        <div class="md:col-span-3 rounded-3xl overflow-hidden border hair bg-slate-900 min-h-[360px] md:min-h-full">
+          <iframe
+            src={`https://maps.google.com/maps?q=${mapQuery}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
+            width="100%"
+            height="100%"
+            style="border:0; min-height: 360px; filter: invert(0.92) hue-rotate(180deg) contrast(0.95);"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title={`${shopName} location map`}
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="relative border-t hair py-16 md:py-24 px-4 md:px-8 overflow-hidden">
+    <div class="display text-white/[0.04] whitespace-nowrap mb-12" style="font-size: clamp(5rem, 22vw, 18rem); line-height: 0.8;">
+      Eda Mone.
+    </div>
+    <div class="max-w-[1400px] mx-auto">
+      <div class="grid md:grid-cols-3 gap-8 md:gap-10 mb-12">
+        <div>
+          <div class="flex items-center gap-3 mb-5">
+            <img src="/images/shops/eda-mone-mens-store/logo.jpeg" alt="Eda Mone Men's Store logo" class="w-12 h-12 rounded-xl object-cover border hair" />
+            <div>
+              <div class="font-semibold text-white">Eda Mone</div>
+              <div class="mono text-[10px] uppercase tracking-[0.25em] text-white/50">Men's Store</div>
+            </div>
+          </div>
+          <p class="text-sm text-white/60 leading-relaxed">
+            Premium men's clothing in Kozhinjampara. Part of the
+            <a href="/" class="text-[var(--accent-1)] hover:underline">MyChoice Palakkad</a> network.
+          </p>
+        </div>
+        <div>
+          <div class="mono text-[10px] uppercase tracking-[0.3em] text-white/40 mb-5">Explore</div>
+          <ul class="space-y-3 text-sm text-white/80">
+            <li><a href="#story" class="hover:text-white transition-colors" data-hover>Story</a></li>
+            <li><a href="#collection" class="hover:text-white transition-colors" data-hover>Collection</a></li>
+            <li><a href="#visit" class="hover:text-white transition-colors" data-hover>Visit</a></li>
+            <li><a href={shopNowUrl} target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors" data-hover>Shop Online ↗</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="mono text-[10px] uppercase tracking-[0.3em] text-white/40 mb-5">Find Us</div>
+          <ul class="space-y-2 text-sm text-white/70">
+            <li>RV Pudur, Kozhinjampara</li>
+            <li>Opposite Palli Mokku</li>
+            <li>Palakkad, Kerala — 678554</li>
+            <li class="pt-2"><a href={`tel:+91${callNumber}`} class="text-white font-medium hover:text-[var(--accent-1)] transition-colors">+91 {callNumber}</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t hair pt-6 flex flex-wrap justify-between gap-3 mono text-[10px] uppercase tracking-[0.3em] text-white/30">
+        <span>&copy; {new Date().getFullYear()} Eda Mone Men's Store</span>
+        <span>Listed on <a href="/" class="text-[var(--accent-1)] hover:text-white">MyChoice Palakkad</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a
+    href={`https://wa.me/${whatsappNumber}?text=Hi%2C%20I'm%20interested%20in%20Eda%20Mone%20Men's%20Store`}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="magnetic fixed bottom-5 right-5 z-50 bg-[var(--accent-1)] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl shadow-[var(--accent-1)]/30 hover:scale-110 transition-transform"
+    aria-label="Chat with Eda Mone Men's Store on WhatsApp"
+    data-hover
+  >
+    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <script>
+    import gsap from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    import Lenis from "lenis";
+
+    gsap.registerPlugin(ScrollTrigger);
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isDesktop = window.matchMedia("(min-width: 1024px)").matches && window.matchMedia("(hover: hover)").matches;
+
+    // Smooth scroll
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+    });
+    lenis.on("scroll", ScrollTrigger.update);
+    gsap.ticker.add((time) => lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
+
+    // Split title words into chars
+    document.querySelectorAll<HTMLElement>(".hero-word, .hero-italic").forEach((el) => {
+      const text = el.textContent || "";
+      el.innerHTML = text
+        .split("")
+        .map((c) => `<span class="char">${c === " " ? "&nbsp;" : c}</span>`)
+        .join("");
+    });
+
+    if (!reduced) {
+      // Hero char reveal with spring feel
+      gsap.to(".hero-word .char, .hero-italic .char", {
+        y: 0,
+        rotate: 0,
+        opacity: 1,
+        duration: 1.2,
+        ease: "back.out(1.4)",
+        stagger: 0.02,
+        delay: 0.15,
+      });
+
+      // Reveal-inner lines
+      document.querySelectorAll<HTMLElement>("[data-reveal]").forEach((el) => {
+        const d = parseFloat(el.getAttribute("data-reveal-delay") || "0");
+        gsap.to(el, {
+          y: 0,
+          duration: 1.1,
+          ease: "expo.out",
+          delay: 0.25 + d,
+        });
+      });
+
+      // Scroll-triggered reveals (spring-like)
+      gsap.utils.toArray<HTMLElement>(".reveal-text").forEach((el) => {
+        gsap.set(el, { y: 50, opacity: 0 });
+        ScrollTrigger.create({
+          trigger: el,
+          start: "top 88%",
+          onEnter: () => {
+            gsap.to(el, {
+              y: 0,
+              opacity: 1,
+              duration: 1.1,
+              ease: "expo.out",
+            });
+          },
+        });
+      });
+
+      // Service rows: text + visual slide in from opposite sides
+      gsap.utils.toArray<HTMLElement>(".service-row").forEach((row) => {
+        const text = row.querySelector<HTMLElement>(".service-text");
+        const visual = row.querySelector<HTMLElement>(".service-visual");
+        const isInverted = !!visual?.classList.contains("md:order-2");
+
+        if (text) gsap.set(text, { y: 40, opacity: 0 });
+        if (visual) gsap.set(visual, { x: isInverted ? -60 : 60, opacity: 0 });
+
+        ScrollTrigger.create({
+          trigger: row,
+          start: "top 80%",
+          onEnter: () => {
+            if (text) gsap.to(text, { y: 0, opacity: 1, duration: 1, ease: "expo.out" });
+            if (visual) gsap.to(visual, { x: 0, opacity: 1, duration: 1.1, ease: "expo.out", delay: 0.1 });
+          },
+        });
+      });
+
+      // Parallax on story cards
+      gsap.utils.toArray<HTMLElement>("[data-parallax]").forEach((el) => {
+        const amount = parseFloat(el.getAttribute("data-parallax") || "0.2");
+        gsap.to(el, {
+          y: () => -window.innerHeight * amount,
+          ease: "none",
+          scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: 1 },
+        });
+      });
+
+      // Hero scale/fade on scroll out
+      ScrollTrigger.create({
+        trigger: "#hero",
+        start: "top top",
+        end: "bottom top",
+        scrub: 1,
+        onUpdate(self) {
+          gsap.to("#hero-title", {
+            scale: 1 - self.progress * 0.06,
+            y: self.progress * 30,
+            opacity: 1 - self.progress * 0.7,
+            overwrite: true,
+            duration: 0.3,
+          });
+        },
+      });
+
+      // 3D card stack entrance + scroll tilt
+      const stackItems = gsap.utils.toArray<HTMLElement>(".card-stack-item");
+      stackItems.forEach((item, i) => {
+        const rY = parseFloat(item.getAttribute("data-rotate-y") || "0");
+        const rX = parseFloat(item.getAttribute("data-rotate-x") || "0");
+        const tX = parseFloat(item.getAttribute("data-translate-x") || "0");
+        const tY = parseFloat(item.getAttribute("data-translate-y") || "0");
+        const z = parseFloat(item.getAttribute("data-depth") || "0");
+
+        gsap.set(item, {
+          rotationY: rY * 3,
+          rotationX: rX * 3,
+          x: tX * 3,
+          y: tY * 3,
+          z: z,
+          opacity: 0,
+        });
+
+        gsap.to(item, {
+          rotationY: rY,
+          rotationX: rX,
+          x: tX,
+          y: tY,
+          opacity: 1,
+          duration: 1.4,
+          ease: "back.out(1.2)",
+          delay: 0.4 + i * 0.15,
+        });
+      });
+
+      // Mouse move on card stack
+      if (isDesktop) {
+        const stack = document.getElementById("card-stack");
+        if (stack) {
+          stack.addEventListener("mousemove", (e) => {
+            const rect = stack.getBoundingClientRect();
+            const px = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+            const py = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+            stackItems.forEach((item, i) => {
+              const rY = parseFloat(item.getAttribute("data-rotate-y") || "0");
+              const rX = parseFloat(item.getAttribute("data-rotate-x") || "0");
+              const tX = parseFloat(item.getAttribute("data-translate-x") || "0");
+              const tY = parseFloat(item.getAttribute("data-translate-y") || "0");
+              const strength = (i + 1) * 4;
+              gsap.to(item, {
+                rotationY: rY + px * strength,
+                rotationX: rX - py * strength,
+                x: tX + px * (i * 3),
+                y: tY + py * (i * 3),
+                duration: 0.8,
+                ease: "power3.out",
+              });
+            });
+          });
+          stack.addEventListener("mouseleave", () => {
+            stackItems.forEach((item) => {
+              const rY = parseFloat(item.getAttribute("data-rotate-y") || "0");
+              const rX = parseFloat(item.getAttribute("data-rotate-x") || "0");
+              const tX = parseFloat(item.getAttribute("data-translate-x") || "0");
+              const tY = parseFloat(item.getAttribute("data-translate-y") || "0");
+              gsap.to(item, { rotationY: rY, rotationX: rX, x: tX, y: tY, duration: 1, ease: "elastic.out(1, 0.5)" });
+            });
+          });
+        }
+      }
+
+      // Horizontal pinned scroll (desktop only)
+      if (isDesktop) {
+        const pin = document.getElementById("hscroll-pin");
+        const track = document.getElementById("hscroll-track");
+        if (pin && track) {
+          const distance = () => track.scrollWidth - window.innerWidth + 32;
+          ScrollTrigger.create({
+            trigger: "#hscroll-outer",
+            start: "top top",
+            end: () => `+=${distance()}`,
+            pin,
+            scrub: 1,
+            invalidateOnRefresh: true,
+            onUpdate(self) {
+              gsap.to(track, { x: -distance() * self.progress, duration: 0.1, overwrite: true });
+            },
+          });
+        }
+      }
+
+      // 3D tilt on hover (desktop only)
+      if (isDesktop) {
+        document.querySelectorAll<HTMLElement>("[data-tilt]").forEach((card) => {
+          card.addEventListener("mousemove", (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+            const y = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+            gsap.to(card, {
+              rotationY: x * 6,
+              rotationX: -y * 6,
+              duration: 0.6,
+              ease: "power3.out",
+              transformPerspective: 1200,
+            });
+          });
+          card.addEventListener("mouseleave", () => {
+            gsap.to(card, { rotationY: 0, rotationX: 0, duration: 0.9, ease: "elastic.out(1, 0.5)" });
+          });
+        });
+
+      }
+    }
+  </script>
+</BaseLayout>
