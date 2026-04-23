@@ -3,7 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import "../../styles/global.css";
 
 const shopName = "Eda Mone Men's Store";
-const shopAddress = "RV Pudur, Kozhinjampara, Opposite Palli Mokku, Palakkad, Kerala 678554";
+const shopAddress = "RV Pudur, Kozhinjampara, Opposite Palli Mokku, Palakkad, Kerala 678555";
 const whatsappNumber = "919544483868";
 const callNumber = "9526735749";
 const shopNowUrl = "https://palakkad-dresses.web.app/shop/b35be413-23a3-4116-85d4-a12021a44daa";
@@ -85,7 +85,7 @@ const localBusinessSchema = JSON.stringify({
     "streetAddress": "RV Pudur, Opposite Palli Mokku",
     "addressLocality": "Kozhinjampara",
     "addressRegion": "Kerala",
-    "postalCode": "678554",
+    "postalCode": "678555",
     "addressCountry": "IN"
   },
   "areaServed": [
@@ -109,15 +109,122 @@ const localBusinessSchema = JSON.stringify({
 
 const mapQuery = encodeURIComponent(`${shopName}, ${shopAddress}`);
 const mapShareUrl = "https://share.google/PjRdCN0sqxjrq1Myx";
-const seoKeywords = "eda mone, eda mone mens store, eda mone kozhinjampara, mens clothing palakkad, mens store palakkad, mens wear palakkad, dress shops palakkad, cloth shops palakkad, textile shops palakkad, mens showroom palakkad, kids clothing palakkad, kids wear palakkad, kids store palakkad, formal shirts palakkad, suits palakkad, kurta palakkad, ethnic wear for men, mens casual wear, mens formal wear, mens fashion kerala, mens clothing kerala, mens clothing india, wholesale clothing palakkad, wholesale clothing kerala, bulk clothing supplier, retail clothing store, dress code uniforms, school uniforms palakkad, corporate uniforms, team uniforms, wedding wear for men, custom t shirt printing, customized t shirt printing palakkad, t shirt printing kerala, bulk t shirt printing, embroidery palakkad, screen printing palakkad";
+const seoKeywords = [
+  // Brand
+  "eda mone", "eda mone mens store", "eda mone palakkad", "eda mone kozhinjampara", "eda mone shop", "eda mone online", "eda mone contact", "eda mone address", "eda mone phone number",
+  // Dress shop / cloth shop / clothing store location queries
+  "dress shops in kozhinjampara", "dress shops in palakkad", "best dress shops in palakkad", "best dress shops in kozhinjampara", "best dress shops near me", "popular dress shops palakkad", "famous dress shop palakkad", "trusted dress shop palakkad", "good dress shops in palakkad", "quality dress shops palakkad",
+  "cloth shops palakkad", "cloth shop near me", "cloth shop near me palakkad", "cloth store palakkad", "cloth showroom palakkad", "best cloth shop kozhinjampara", "best cloth store palakkad",
+  "clothing store palakkad", "clothing shop palakkad", "clothing showroom palakkad", "clothing boutique palakkad", "clothes shop palakkad", "apparel store palakkad", "garment shop palakkad", "garment store palakkad", "fashion store palakkad", "fashion shop palakkad", "fashion boutique palakkad", "textile shops palakkad", "textile showroom palakkad",
+  "dress shop near palli mokku", "dress shop rv pudur", "dress shop nattukal", "cloth shop near palli mokku", "cloth shop whatsapp palakkad",
+  // Mens wear / gents wear
+  "mens wear palakkad", "mens wear kozhinjampara", "mens wear kerala", "mens wear india", "mens wear near me",
+  "gents wear palakkad", "gents wear kozhinjampara", "gents clothing palakkad", "gents fashion palakkad", "gents shop palakkad",
+  "menswear palakkad", "menswear kozhinjampara", "menswear showroom palakkad",
+  "mens clothing palakkad", "mens clothing store palakkad", "mens clothing kerala", "mens clothing india",
+  "mens fashion palakkad", "mens fashion kerala", "mens showroom palakkad", "mens shop kozhinjampara", "mens store near me", "mens boutique palakkad",
+  "men's dress shop palakkad", "men's wear shop palakkad",
+  // Clothing types
+  "formal shirts palakkad", "casual shirts palakkad", "shirts palakkad", "pants palakkad", "trousers palakkad", "suit shop palakkad", "wedding suit palakkad", "groom suit palakkad", "wedding wear for men palakkad", "kurta shop palakkad", "kurta kozhinjampara", "ethnic wear for men palakkad", "sherwani palakkad", "churidar palakkad", "pathani palakkad", "mundu palakkad", "dhoti palakkad", "t shirts palakkad", "polos palakkad",
+  // Kids
+  "kids clothing palakkad", "kids wear palakkad", "kids store palakkad", "kids dress palakkad", "kids dress shop palakkad", "kids dress store palakkad",
+  "kids fashion palakkad", "kids shop palakkad", "kids clothing store palakkad",
+  "kids party wear palakkad", "kids ethnic wear palakkad", "kids festive wear palakkad",
+  "children's clothing palakkad", "children's wear palakkad", "children's dress palakkad",
+  "baby clothes palakkad", "baby wear palakkad",
+  "boys shirts palakkad", "boys wear palakkad", "girls frocks palakkad", "girls dress palakkad",
+  "family clothing store palakkad", "family dress shop palakkad",
+  // Wholesale / bulk
+  "wholesale clothing palakkad", "wholesale clothing kerala", "wholesale dress shop palakkad", "wholesale cloth shop palakkad", "wholesale t shirts palakkad", "wholesale kurta palakkad", "wholesale mens wear palakkad", "wholesale kids wear palakkad",
+  "cloth wholesaler palakkad", "cloth wholesaler kozhinjampara", "clothing wholesaler kerala", "best cloth wholesaler in palakkad", "best cloth wholesaler near me",
+  "bulk clothing supplier palakkad", "bulk order shop palakkad", "bulk shirt supplier kerala", "bulk order clothing kerala", "bulk tshirt supplier palakkad", "bulk kurta supplier palakkad", "bulk uniform supplier palakkad",
+  "mens wholesale palakkad", "gents wholesale palakkad", "kids wholesale palakkad",
+  "reseller clothing supplier kerala", "apparel wholesaler palakkad",
+  // Uniforms / dress code / team dress
+  "school uniforms palakkad", "school uniform supplier palakkad", "school dress palakkad", "college uniform palakkad", "college dress palakkad",
+  "corporate uniforms palakkad", "corporate dress palakkad", "office uniform palakkad", "office dress palakkad", "company uniform kerala", "staff uniform supplier palakkad", "work uniform palakkad",
+  "team dress palakkad", "team uniform palakkad", "group dress palakkad", "group uniform palakkad", "matching dress palakkad",
+  "dress code palakkad", "dress code supplier palakkad", "dress code shop kerala", "event dress code palakkad", "wedding dress code palakkad", "family dress code palakkad",
+  "sports uniform palakkad", "cricket jersey palakkad", "football jersey palakkad", "sports team jersey palakkad",
+  "hotel uniform supplier", "restaurant uniform palakkad", "hospital uniform supplier palakkad", "church dress code supplier",
+  // Custom printing
+  "t shirt printing palakkad", "t shirt printing kozhinjampara", "custom t shirt printing palakkad", "customized t shirt printing palakkad", "t shirt printing shop near me", "screen printing palakkad", "vinyl printing palakkad", "sublimation printing palakkad", "embroidery shop palakkad", "embroidery service palakkad", "logo printing on t shirts", "bulk t shirt printing palakkad", "jersey printing palakkad", "event t shirts palakkad", "birthday t shirt printing palakkad",
+  // Festive / occasion
+  "onam dress shop palakkad", "vishu dress palakkad", "wedding dress palakkad", "eid collection palakkad", "festival wear palakkad",
+  // Retail / online
+  "retail clothing store palakkad", "buy clothes online palakkad", "online dress shopping palakkad", "palakkad online dress store", "mens wear online palakkad", "dress shop home delivery palakkad", "dress shop whatsapp palakkad"
+].join(", ");
+
+const faqs = [
+  {
+    q: "What is the best dress shop / cloth shop in Kozhinjampara, Palakkad?",
+    a: "Eda Mone Men's Store at RV Pudur, Kozhinjampara is one of the most trusted clothing stores in Palakkad. Whether you search for a dress shop, cloth shop, textile showroom, garment store, or fashion boutique — we stock mens wear, kids wear, ethnic wear, uniforms, and custom printed clothing all under one roof."
+  },
+  {
+    q: "Is Eda Mone the best cloth wholesaler in Palakkad?",
+    a: "Yes — we're a leading cloth wholesaler and bulk clothing supplier in Palakkad and Kozhinjampara. We offer wholesale pricing, bulk order supply, and reseller support for mens wear, kids wear, t-shirts, kurtas, uniforms, and ethnic clothing across Kerala. WhatsApp +91 95444 83868 for a wholesale catalogue."
+  },
+  {
+    q: "Do you sell mens wear / gents wear / mens clothing in Palakkad?",
+    a: "Absolutely. Our menswear edit covers gents formal shirts, casual shirts, trousers, denim, suits, sherwanis, kurtas, pathani, dhoti, mundu, and accessories. Whether you call it mens wear, gents wear, or mens fashion — it's all here in our Kozhinjampara showroom."
+  },
+  {
+    q: "Do you have kids wear / kids clothing / kids dress in Palakkad?",
+    a: "Yes — we stock a dedicated kids collection: kids wear, kids dress, party wear, ethnic sets, daily wear, and festival fits for boys and girls of all ages. Great for family shopping visits and occasion-based gifting."
+  },
+  {
+    q: "Where can I order team dress / group uniforms / dress code outfits in Palakkad?",
+    a: "Eda Mone handles team dress, group uniforms, school dress code, college uniforms, corporate uniforms, office dress code, sports jerseys, church dress code, and wedding group outfits. We manage fabric, fit, color matching, stitching, and logo embroidery end to end."
+  },
+  {
+    q: "Do you do custom T-shirt printing / tshirt printing near Palakkad?",
+    a: "Yes — customized T-shirt printing is one of our core services. Screen printing, digital printing, vinyl, sublimation, and embroidery on tees, polos, hoodies, and kurtas. Perfect for team events, college fests, corporate gifting, family functions, birthdays, and bulk tshirt orders."
+  },
+  {
+    q: "Can I place a bulk order / wholesale order for clothing?",
+    a: "Yes — we supply bulk orders and wholesale clothing to shops, resellers, event organizers, schools, offices, and teams across Kerala. Bulk pricing is available for t-shirts, shirts, kurtas, uniforms, and printed apparel. Contact us on WhatsApp for a quote."
+  },
+  {
+    q: "Do you supply school uniforms and corporate uniforms?",
+    a: "Yes — we're a trusted school uniform supplier and corporate uniform maker in Palakkad. School dress, college uniforms, office uniforms, hotel uniforms, staff uniforms, and event dress codes — we deliver complete solutions with stitching and embroidery included."
+  },
+  {
+    q: "Where exactly is Eda Mone Men's Store located?",
+    a: "Eda Mone Men's Store is at RV Pudur, opposite Palli Mokku, Kozhinjampara, Palakkad, Kerala - 678555. It's easy to find — near the main road and visible landmarks. Call +91 9526735749 or WhatsApp +91 95444 83868 for live store timings."
+  },
+  {
+    q: "Can I shop online from Eda Mone anywhere in Kerala or India?",
+    a: "Yes — our online clothing store accepts orders from across Kerala and India. You can browse mens wear, kids wear, ethnic wear, and accessories online, or message us on WhatsApp for personalized recommendations, custom prints, and wholesale pricing."
+  },
+  {
+    q: "Which cloth store near me offers mens, kids, wholesale, and printing all in one?",
+    a: "Eda Mone is one of the few one-stop clothing stores in Palakkad offering everything — retail for walk-in customers, wholesale for resellers and shops, uniform supply for schools and offices, and custom t-shirt printing for events and teams. Visit us or get in touch on WhatsApp."
+  },
+  {
+    q: "Do you sell wedding wear, ethnic wear, and festival collection?",
+    a: "Yes — our ethnic wear edit includes wedding sherwanis, groom suits, kurtas, pathani, dhoti, and festive collections for Onam, Vishu, Eid, Ramadan, Christmas, and wedding season. Also available for groom, family, and group coordinated looks."
+  }
+];
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": { "@type": "Answer", "text": f.a }
+  }))
+});
+
+const combinedSchema = `${localBusinessSchema}</script><script type="application/ld+json">${faqSchema}`;
 ---
 
 <BaseLayout
-  title="Eda Mone Men's Store - Men's & Kids Clothing, Uniforms, Custom Printing in Kozhinjampara, Palakkad"
-  description="Eda Mone Men's Store in Kozhinjampara, Palakkad. Premium men's collection, kids collection, dress codes & uniforms, retail and wholesale clothing, plus customized T-shirt printing. Visit RV Pudur or shop online."
+  title="Eda Mone Men's Store - Best Dress Shop in Kozhinjampara, Palakkad | Men's, Kids, Uniforms, Wholesale & T-Shirt Printing"
+  description="Eda Mone Men's Store, RV Pudur, Kozhinjampara, Palakkad. One of the best dress shops in Palakkad offering men's clothing, kids wear, formal shirts, kurtas, suits, school & corporate uniforms, wholesale bulk orders, and customized T-shirt printing with screen printing & embroidery."
   keywords={seoKeywords}
   image={`${siteUrl}${imgBase}/logo.jpeg`}
-  schema={localBusinessSchema}
+  schema={combinedSchema}
 >
   <!-- Header -->
   <header class="w-full py-4 px-6 md:px-12 bg-primary text-white">
@@ -136,6 +243,7 @@ const seoKeywords = "eda mone, eda mone mens store, eda mone kozhinjampara, mens
       <div class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-300">
         <a href="#services" class="hover:text-accent transition-colors">Services</a>
         <a href="#about" class="hover:text-accent transition-colors">About</a>
+        <a href="#faq" class="hover:text-accent transition-colors">FAQ</a>
         <a href="#visit" class="hover:text-accent transition-colors">Visit</a>
       </div>
       <a
@@ -368,8 +476,62 @@ const seoKeywords = "eda mone, eda mone mens store, eda mone kozhinjampara, mens
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section id="faq" class="py-20 px-6 bg-surface">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <div class="inline-block bg-accent/10 border border-accent/20 rounded-full px-4 py-1.5 text-xs font-semibold text-accent mb-4">
+          FREQUENTLY ASKED
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Popular Questions</h2>
+        <p class="text-muted max-w-2xl mx-auto text-lg">
+          Everything people ask about the best dress shop in Kozhinjampara, Palakkad.
+        </p>
+      </div>
+
+      <div class="space-y-3">
+        {faqs.map((faq, i) => (
+          <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-accent/40 transition-colors">
+            <summary class="flex items-center justify-between gap-4 p-6 cursor-pointer list-none">
+              <h3 class="font-semibold text-primary text-base md:text-lg leading-snug">
+                {faq.q}
+              </h3>
+              <span class="flex-shrink-0 w-8 h-8 rounded-full bg-accent/10 text-accent flex items-center justify-center group-open:rotate-45 transition-transform">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 6v12m6-6H6"/></svg>
+              </span>
+            </summary>
+            <div class="px-6 pb-6 text-muted leading-relaxed text-sm md:text-base">
+              {faq.a}
+            </div>
+          </details>
+        ))}
+      </div>
+
+      <!-- SEO content paragraph -->
+      <div class="mt-12 p-8 bg-white rounded-2xl border border-gray-100">
+        <h3 class="text-primary font-bold text-lg mb-3 text-center">Your One-Stop Clothing Store in Palakkad</h3>
+        <p class="text-muted text-sm leading-relaxed max-w-3xl mx-auto text-center">
+          Looking for the best <strong class="text-primary">dress shop, cloth shop, clothing store, textile showroom, or fashion boutique</strong>
+          in <strong class="text-primary">Palakkad and Kozhinjampara</strong>?
+          <strong class="text-primary">Eda Mone Men's Store</strong> is your answer.
+          We serve customers across <strong class="text-primary">RV Pudur, Nattukal, Kozhinjampara, Palakkad district, and greater Kerala</strong> —
+          with mens wear, gents wear, kids wear, family fashion, ethnic wear, wedding collection,
+          school uniforms, corporate dress codes, team uniforms, sports jerseys,
+          wholesale clothing supply, bulk orders for resellers, and customized t-shirt printing
+          with screen printing and embroidery. Whether you search
+          <em>"best cloth wholesaler near me"</em>, <em>"kids wear shop Palakkad"</em>,
+          <em>"mens wear showroom Kozhinjampara"</em>, <em>"team dress supplier"</em>, or
+          <em>"tshirt printing near me"</em> — you'll find what you need at our store at
+          RV Pudur, opposite Palli Mokku. Visit us in person, WhatsApp
+          <a href={`https://wa.me/${whatsappNumber}`} class="text-accent font-semibold hover:underline">+91 95444 83868</a>,
+          or shop online from anywhere in India.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- Visit -->
-  <section id="visit" class="py-20 px-6 bg-surface">
+  <section id="visit" class="py-20 px-6">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-bold mb-4">Visit The Store</h2>
@@ -435,8 +597,8 @@ const seoKeywords = "eda mone, eda mone mens store, eda mone kozhinjampara, mens
           </a>
         </div>
 
-        <!-- Map embed -->
-        <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm bg-gray-100 min-h-[400px]">
+        <!-- Map embed with overlay "Get Directions" button -->
+        <div class="relative rounded-xl overflow-hidden border border-gray-200 shadow-sm bg-gray-100 min-h-[400px] group">
           <iframe
             src={`https://maps.google.com/maps?q=${mapQuery}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
             width="100%"
@@ -446,6 +608,18 @@ const seoKeywords = "eda mone, eda mone mens store, eda mone kozhinjampara, mens
             referrerpolicy="no-referrer-when-downgrade"
             title={`${shopName} location map`}
           ></iframe>
+          <a
+            href={mapShareUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="absolute bottom-4 right-4 inline-flex items-center gap-2 bg-white hover:bg-accent text-primary hover:text-white font-semibold text-sm px-4 py-2.5 rounded-lg shadow-lg transition-colors"
+            aria-label="Open directions in Google Maps"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+            </svg>
+            Get Directions
+          </a>
         </div>
       </div>
     </div>
@@ -482,7 +656,7 @@ const seoKeywords = "eda mone, eda mone mens store, eda mone kozhinjampara, mens
           <ul class="space-y-2 text-sm">
             <li>RV Pudur, Kozhinjampara</li>
             <li>Opposite Palli Mokku</li>
-            <li>Palakkad, Kerala - 678554</li>
+            <li>Palakkad, Kerala - 678555</li>
             <li class="pt-1"><a href={`tel:+91${callNumber}`} class="text-white hover:text-accent transition-colors">+91 {callNumber}</a></li>
           </ul>
         </div>
