@@ -1,0 +1,202 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+---
+
+<BaseLayout
+  title="Account & Data Deletion Request - OnePlace Delivery"
+  description="Request deletion of your OnePlace Delivery account and personal data. Email or WhatsApp us — we process requests within 30 days under Indian law."
+  keywords="oneplace delivery delete account, data deletion request, account removal"
+>
+  <!-- Header -->
+  <header class="w-full py-4 px-6 md:px-12 bg-white border-b border-gray-200">
+    <nav class="max-w-6xl mx-auto flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3">
+        <img src="/images/oneplace-logo.png" alt="OnePlace Delivery logo" class="w-10 h-10 rounded-lg object-cover border border-gray-100" />
+        <div class="leading-tight">
+          <div class="font-bold tracking-tight text-base text-primary">OnePlace</div>
+          <div class="text-[11px] text-muted uppercase tracking-widest">Delivery</div>
+        </div>
+      </a>
+      <a href="/" class="text-sm font-medium text-muted hover:text-primary transition-colors">
+        ← Back to Home
+      </a>
+    </nav>
+  </header>
+
+  <main class="py-12 md:py-20 px-6 bg-surface min-h-screen">
+    <article class="max-w-3xl mx-auto">
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12">
+        <div class="inline-block bg-accent/10 border border-accent/20 rounded-full px-4 py-1.5 text-xs font-semibold text-accent mb-4">
+          DATA PRIVACY
+        </div>
+        <h1 class="text-3xl md:text-4xl font-extrabold mb-4 text-primary">
+          Account &amp; Data Deletion Request
+        </h1>
+        <p class="text-muted text-lg leading-relaxed mb-8">
+          We respect your right to control your personal data. To delete your OnePlace Delivery
+          account and all associated information, contact us using either method below.
+          Requests are processed within <strong class="text-primary">30 days</strong> as required
+          under Indian law.
+        </p>
+
+        <hr class="my-8 border-gray-200" />
+
+        <h2 class="text-xl font-bold text-primary mb-4">Two Ways to Request Deletion</h2>
+        <p class="text-muted leading-relaxed mb-6">
+          Please contact us from the email address or phone number registered with your OnePlace
+          Delivery account so we can verify ownership.
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-4 my-8">
+          <!-- Email card -->
+          <a
+            href="mailto:xqtechsolutions@gmail.com?subject=OnePlace Delivery - Account Deletion Request&body=Hello,%0D%0A%0D%0AI would like to request the deletion of my OnePlace Delivery account and all associated personal data.%0D%0A%0D%0ARegistered Email: %0D%0ARegistered Phone Number: %0D%0A%0D%0AThank you."
+            class="group bg-gradient-to-br from-accent/5 to-emerald-50 border border-accent/20 rounded-2xl p-6 hover:shadow-md transition-all hover:-translate-y-1"
+          >
+            <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <div class="text-xs font-bold uppercase tracking-widest text-accent mb-2">Email Us</div>
+            <div class="font-bold text-lg text-primary break-all mb-1">xqtechsolutions@gmail.com</div>
+            <p class="text-sm text-muted">Click to open email with a pre-filled deletion request.</p>
+          </a>
+
+          <!-- WhatsApp card -->
+          <a
+            href="https://wa.me/916235455560?text=Hi%2C%20I%20want%20to%20delete%20my%20OnePlace%20Delivery%20account%20and%20all%20associated%20data.%20My%20registered%20email%20is%20___%20and%20phone%20is%20___."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 rounded-2xl p-6 hover:shadow-md transition-all hover:-translate-y-1"
+          >
+            <div class="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347"/>
+              </svg>
+            </div>
+            <div class="text-xs font-bold uppercase tracking-widest text-green-700 mb-2">WhatsApp Us</div>
+            <div class="font-bold text-lg text-primary mb-1">+91 6235455560</div>
+            <p class="text-sm text-muted">Tap to open WhatsApp with a pre-filled deletion request.</p>
+          </a>
+        </div>
+
+        <h3 class="text-lg font-semibold text-primary mt-8 mb-3">Please include in your message</h3>
+        <ul class="list-disc pl-6 space-y-2 text-muted">
+          <li>The <strong class="text-primary">email address</strong> registered with your account</li>
+          <li>The <strong class="text-primary">phone number</strong> linked to your account</li>
+          <li>A short note confirming you want your data deleted</li>
+        </ul>
+
+        <hr class="my-10 border-gray-200" />
+
+        <h2 class="text-xl font-bold text-primary mb-4">What Happens Next</h2>
+        <div class="space-y-4">
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 w-8 h-8 bg-accent text-white rounded-lg flex items-center justify-center font-bold text-sm">1</div>
+            <div>
+              <h4 class="font-semibold text-primary mb-1">We verify your identity</h4>
+              <p class="text-muted text-sm leading-relaxed">
+                We confirm the request is from the registered account holder to prevent
+                unauthorized deletion.
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 w-8 h-8 bg-accent text-white rounded-lg flex items-center justify-center font-bold text-sm">2</div>
+            <div>
+              <h4 class="font-semibold text-primary mb-1">We delete your personal data</h4>
+              <p class="text-muted text-sm leading-relaxed">
+                Your profile, addresses, location data, search history, and saved
+                preferences are permanently removed from our active systems.
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 w-8 h-8 bg-accent text-white rounded-lg flex items-center justify-center font-bold text-sm">3</div>
+            <div>
+              <h4 class="font-semibold text-primary mb-1">Completed within 30 days</h4>
+              <p class="text-muted text-sm leading-relaxed">
+                As required under Indian law, your request is fully processed within
+                <strong class="text-primary">30 days</strong>. You will receive a
+                confirmation email/WhatsApp once complete.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="my-10 border-gray-200" />
+
+        <h2 class="text-xl font-bold text-primary mb-4">What Will Be Deleted</h2>
+        <ul class="list-disc pl-6 space-y-2 text-muted">
+          <li>Your account profile (name, email, phone, profile photo)</li>
+          <li>Saved addresses and location data</li>
+          <li>Search history and browsing patterns</li>
+          <li>Notification and communication preferences</li>
+          <li>Any other personal information linked to your account</li>
+        </ul>
+
+        <h3 class="text-lg font-semibold text-primary mt-8 mb-3">What We May Retain</h3>
+        <p class="text-muted text-sm leading-relaxed mb-3">
+          As required under Indian tax, accounting, and consumer protection laws, we may
+          retain certain records for legally mandated periods (typically up to 7 years):
+        </p>
+        <ul class="list-disc pl-6 space-y-2 text-muted">
+          <li>Order invoices and transaction records (for GST and accounting compliance)</li>
+          <li>Anonymized analytics data (no longer linked to your identity)</li>
+          <li>Records related to legal claims, disputes, or investigations</li>
+        </ul>
+
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 mt-8">
+          <h3 class="font-semibold text-amber-900 mb-2 flex items-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+            </svg>
+            Important
+          </h3>
+          <p class="text-amber-900 text-sm leading-relaxed">
+            Account deletion is <strong>permanent and cannot be undone</strong>. Once deleted,
+            you will lose access to your account, order history, addresses, and any wallet
+            balance or pending refunds.
+          </p>
+        </div>
+
+        <hr class="my-10 border-gray-200" />
+
+        <h2 class="text-xl font-bold text-primary mb-4">Need More Information?</h2>
+        <p class="text-muted leading-relaxed mb-4">
+          For full details on how we handle your data, please review:
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a
+            href="/privacy-policy"
+            class="inline-flex items-center gap-2 bg-white border border-gray-200 hover:border-accent text-primary font-medium px-5 py-2.5 rounded-lg transition-colors text-sm"
+          >
+            Privacy Policy →
+          </a>
+          <a
+            href="/terms"
+            class="inline-flex items-center gap-2 bg-white border border-gray-200 hover:border-accent text-primary font-medium px-5 py-2.5 rounded-lg transition-colors text-sm"
+          >
+            Terms &amp; Conditions →
+          </a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="bg-primary text-gray-400 py-10 px-6 md:px-12">
+    <div class="max-w-6xl mx-auto text-center text-sm">
+      <p class="mb-2">
+        &copy; {new Date().getFullYear()} OnePlace Delivery · A product of
+        <a href="https://xqtechsolutions.in" class="text-accent hover:text-accent-light">XQ Tech Solutions</a>
+      </p>
+      <div class="flex justify-center gap-4 mt-3 text-xs">
+        <a href="/privacy-policy" class="hover:text-white transition-colors">Privacy Policy</a>
+        <a href="/terms" class="hover:text-white transition-colors">Terms &amp; Conditions</a>
+        <a href="/delete-request" class="hover:text-white transition-colors">Delete Account</a>
+      </div>
+    </div>
+  </footer>
+</BaseLayout>
