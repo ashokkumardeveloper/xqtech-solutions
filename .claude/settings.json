@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"d:/portfolio/xqtech-solutions/oneplace/public/images\")",
+      "Bash(mkdir -p \"d:/portfolio/xqtech-solutions/oneplace/src/styles\")",
+      "Bash(mkdir -p \"d:/portfolio/xqtech-solutions/oneplace/src/layouts\")",
+      "Bash(cp \"d:/portfolio/xqtech-solutions/assets/oneplace/oneplace_logo.png\" \"d:/portfolio/xqtech-solutions/oneplace/public/images/oneplace-logo.png\")"
+    ]
+  }
+}

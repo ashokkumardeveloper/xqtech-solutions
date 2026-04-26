@@ -1,0 +1,492 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+
+const siteUrl = "https://oneplacedelivery.in";
+const xqUrl = "https://xqtechsolutions.in";
+const playStoreUrl = "#"; // TODO: replace with Play Store URL when published
+const appStoreUrl = "#"; // TODO: replace with App Store URL when published
+const supportWhatsApp = "916235455560";
+const serviceRadiusKm = 15;
+
+const seoKeywords = [
+  // Brand
+  "oneplace delivery", "one place delivery", "oneplace app", "oneplace kozhinjampara", "oneplace palakkad", "oneplacedelivery.in",
+  // Service queries
+  "grocery delivery palakkad", "grocery delivery kozhinjampara", "grocery delivery near me", "online grocery delivery palakkad", "vegetable delivery palakkad", "grocery home delivery kozhinjampara",
+  "grocery shop online palakkad", "grocery shopping app palakkad", "online grocery store kozhinjampara", "grocery near me palakkad",
+  "fastest grocery delivery kozhinjampara", "instant grocery delivery palakkad", "free grocery delivery palakkad",
+  // Future categories
+  "food delivery palakkad", "food delivery kozhinjampara", "online food order palakkad", "medicine delivery palakkad", "pharmacy delivery kozhinjampara", "online medicine palakkad", "fruits delivery palakkad", "essentials delivery palakkad",
+  // Local
+  "kozhinjampara delivery service", "palakkad delivery app", "rv pudur delivery", "nattukal delivery", "chittur delivery", "delivery app kerala", "kerala grocery delivery",
+  // Long tail
+  "all in one delivery app palakkad", "everything delivery app kerala", "one app for everything kozhinjampara", "best delivery app palakkad"
+].join(", ");
+
+const organizationSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "OnePlace Delivery",
+  "operatingSystem": "Android, iOS, Web",
+  "applicationCategory": "ShoppingApplication",
+  "description": "OnePlace Delivery — order groceries (and soon food, medicines, and more) from local stores in Kozhinjampara, Palakkad. Fast delivery within a 15 km radius.",
+  "url": siteUrl,
+  "publisher": {
+    "@type": "Organization",
+    "name": "XQ Tech Solutions",
+    "url": xqUrl
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "INR"
+  },
+  "areaServed": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "addressLocality": "Kozhinjampara",
+      "addressRegion": "Kerala",
+      "addressCountry": "IN"
+    },
+    "geoRadius": `${serviceRadiusKm * 1000}`
+  }
+});
+
+const faqs = [
+  {
+    q: "What is OnePlace Delivery?",
+    a: "OnePlace Delivery is a one-stop delivery app for the Kozhinjampara and Palakkad area. Currently we focus on groceries — vegetables, daily essentials, household items — and we'll be adding food, medicines, and more soon. One app for everything you need."
+  },
+  {
+    q: "Where do you deliver?",
+    a: `We deliver across a 15 km radius from Kozhinjampara, Palakkad. That covers RV Pudur, Nattukal, Chittur, and surrounding villages. Drop your address in the app and we'll show you what's available.`
+  },
+  {
+    q: "How do I order groceries?",
+    a: "Download OnePlace Delivery from the Play Store or App Store, sign up, browse the catalogue, and check out. We deliver to your door — no pickup required."
+  },
+  {
+    q: "Are food and medicine delivery available now?",
+    a: "We're starting with groceries first. Food delivery, medicine delivery, and other categories will be added in upcoming releases. Stay tuned via the app for launch updates."
+  },
+  {
+    q: "Is there a delivery fee?",
+    a: "Delivery fees vary by distance and order size. The app will show the exact fee before you place the order — no surprises."
+  },
+  {
+    q: "Can I become a delivery partner or list my store on OnePlace?",
+    a: `Yes — local stores and delivery partners can join our network. WhatsApp us at +91 6235455560 or email admin@xqtechsolutions.com.`
+  }
+];
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": { "@type": "Answer", "text": f.a }
+  }))
+});
+
+const combinedSchema = `${organizationSchema}</script><script type="application/ld+json">${faqSchema}`;
+
+const categories = [
+  { name: "Groceries", desc: "Vegetables, fruits, daily essentials, household items, dairy and more.", status: "Live", color: "from-emerald-500 to-green-600", icon: "🛒" },
+  { name: "Food", desc: "Order from local restaurants and home cooks. Coming soon.", status: "Coming Soon", color: "from-amber-500 to-orange-600", icon: "🍽️" },
+  { name: "Medicines", desc: "Pharmacy delivery from licensed local stores. Coming soon.", status: "Coming Soon", color: "from-rose-500 to-pink-600", icon: "💊" },
+  { name: "More", desc: "Stationery, gifts, flowers, and everyday needs — joining soon.", status: "Coming Soon", color: "from-indigo-500 to-purple-600", icon: "✨" },
+];
+---
+
+<BaseLayout
+  title="OnePlace Delivery - Grocery, Food & Medicine Delivery in Kozhinjampara, Palakkad"
+  description="OnePlace Delivery — one app for everything you need in Kozhinjampara and Palakkad. Currently delivering groceries within 15 km. Food, medicines & more coming soon."
+  keywords={seoKeywords}
+  schema={combinedSchema}
+>
+  <!-- Header -->
+  <header class="w-full py-4 px-6 md:px-12 bg-primary text-white">
+    <nav class="max-w-6xl mx-auto flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3">
+        <img src="/images/oneplace-logo.png" alt="OnePlace Delivery logo" class="w-10 h-10 rounded-lg object-cover border border-white/10 bg-white/5" />
+        <div class="leading-tight">
+          <div class="font-bold tracking-tight text-base">OnePlace</div>
+          <div class="text-[11px] text-white/60 uppercase tracking-widest">Delivery</div>
+        </div>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-300">
+        <a href="#categories" class="hover:text-accent transition-colors">Categories</a>
+        <a href="#how" class="hover:text-accent transition-colors">How It Works</a>
+        <a href="#area" class="hover:text-accent transition-colors">Service Area</a>
+        <a href="#faq" class="hover:text-accent transition-colors">FAQ</a>
+      </div>
+      <a
+        href="#download"
+        class="bg-accent hover:bg-accent-light text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors"
+      >
+        Download
+      </a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative bg-primary text-white overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-primary via-emerald-900/30 to-accent/10"></div>
+    <div class="absolute top-0 right-0 w-96 h-96 bg-accent/20 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl"></div>
+
+    <div class="relative max-w-6xl mx-auto px-6 md:px-12 pt-20 pb-20 md:pt-28 md:pb-28">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="inline-flex items-center gap-2 bg-accent/20 border border-accent/40 rounded-full px-4 py-1.5 text-xs font-semibold text-accent-light mb-6">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent-light animate-pulse"></span>
+            LIVE IN KOZHINJAMPARA · {serviceRadiusKm} KM RADIUS
+          </div>
+          <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6" style="font-family: var(--font-display)">
+            One app, <span class="text-accent-light">everything</span> you need.
+          </h1>
+          <p class="text-gray-300 text-lg md:text-xl mb-8 leading-relaxed">
+            Order groceries from local stores in Kozhinjampara, Palakkad — delivered to your door.
+            Food, medicines, and more coming soon. All in one app.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a
+              href={playStoreUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-3 bg-white text-primary hover:bg-accent hover:text-white font-semibold px-6 py-3.5 rounded-xl transition-colors"
+            >
+              <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5ZM16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12ZM20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81ZM6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z"/>
+              </svg>
+              <div class="text-left leading-tight">
+                <div class="text-[10px] uppercase tracking-widest opacity-80">GET IT ON</div>
+                <div class="font-bold">Google Play</div>
+              </div>
+            </a>
+            <a
+              href={appStoreUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-3 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold px-6 py-3.5 rounded-xl transition-colors"
+            >
+              <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+              </svg>
+              <div class="text-left leading-tight">
+                <div class="text-[10px] uppercase tracking-widest opacity-80">Coming Soon</div>
+                <div class="font-bold">App Store</div>
+              </div>
+            </a>
+          </div>
+          <div class="flex flex-wrap items-center gap-5 mt-8 text-sm text-gray-400">
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-accent-light" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              <span>Local stores</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-accent-light" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              <span>Fresh delivery</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-accent-light" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+              <span>UPI / Cash</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero visual: phone-style mock -->
+        <div class="hidden md:flex justify-center">
+          <div class="relative w-full max-w-[360px]">
+            <div class="relative aspect-[9/16] rounded-[2.5rem] overflow-hidden border-8 border-gray-800 bg-gradient-to-br from-emerald-700 via-emerald-600 to-accent shadow-2xl">
+              <div class="relative h-full p-6 flex flex-col text-white">
+                <div class="flex items-center justify-between mb-5">
+                  <img src="/images/oneplace-logo.png" alt="" class="w-10 h-10 rounded-xl object-contain bg-white/10 p-1" />
+                  <div class="text-xs opacity-80">📍 Kozhinjampara</div>
+                </div>
+                <div class="text-xs opacity-70 mb-1">Welcome back</div>
+                <div class="text-2xl font-bold mb-5" style="font-family: var(--font-display)">Order Groceries</div>
+                <div class="bg-white/15 backdrop-blur rounded-2xl p-3 mb-3 flex items-center gap-2">
+                  <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                  <span class="text-xs opacity-80">Search for vegetables, milk...</span>
+                </div>
+                <div class="space-y-2 flex-1 overflow-hidden">
+                  <div class="bg-white/15 backdrop-blur rounded-xl p-3 flex items-center gap-3">
+                    <div class="text-2xl">🥬</div>
+                    <div class="flex-1">
+                      <div class="text-sm font-semibold">Fresh Vegetables</div>
+                      <div class="text-[10px] opacity-70">Delivered in 30 min</div>
+                    </div>
+                  </div>
+                  <div class="bg-white/15 backdrop-blur rounded-xl p-3 flex items-center gap-3">
+                    <div class="text-2xl">🥛</div>
+                    <div class="flex-1">
+                      <div class="text-sm font-semibold">Dairy & Milk</div>
+                      <div class="text-[10px] opacity-70">From local farms</div>
+                    </div>
+                  </div>
+                  <div class="bg-white/15 backdrop-blur rounded-xl p-3 flex items-center gap-3">
+                    <div class="text-2xl">🍎</div>
+                    <div class="flex-1">
+                      <div class="text-sm font-semibold">Fruits</div>
+                      <div class="text-[10px] opacity-70">Hand-picked</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="absolute -top-4 -right-4 bg-white text-primary rounded-2xl px-4 py-3 shadow-xl rotate-3">
+              <div class="text-[10px] uppercase tracking-widest text-muted">Delivery in</div>
+              <div class="font-bold text-lg">~30 min</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section id="categories" class="py-20 px-6 bg-surface">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <div class="inline-block bg-accent/10 border border-accent/20 rounded-full px-4 py-1.5 text-xs font-semibold text-accent mb-4">
+          ONE APP, EVERYTHING
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">What You Can Order</h2>
+        <p class="text-muted max-w-2xl mx-auto text-lg">
+          Starting with groceries, growing into a full delivery service for everything you need.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {categories.map((cat) => (
+          <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all">
+            <div class={`aspect-[4/3] relative bg-gradient-to-br ${cat.color} flex items-center justify-center`}>
+              <div class="text-7xl">{cat.icon}</div>
+              <div class={`absolute top-4 right-4 text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full ${cat.status === 'Live' ? 'bg-white text-emerald-600' : 'bg-white/90 text-gray-600'}`}>
+                {cat.status === 'Live' ? '● Live' : cat.status}
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="font-bold text-lg mb-1.5" style="font-family: var(--font-display)">{cat.name}</h3>
+              <p class="text-muted text-sm leading-relaxed">{cat.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how" class="py-20 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">How It Works</h2>
+        <p class="text-muted max-w-xl mx-auto text-lg">
+          Order in minutes. Delivered fresh to your door.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-accent text-white rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl font-bold shadow-lg shadow-accent/30">1</div>
+          <h3 class="font-bold text-lg mb-2">Download App</h3>
+          <p class="text-muted text-sm">Install OnePlace Delivery from Play Store or App Store.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-accent text-white rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl font-bold shadow-lg shadow-accent/30">2</div>
+          <h3 class="font-bold text-lg mb-2">Browse & Add</h3>
+          <p class="text-muted text-sm">Pick groceries from local stores in Kozhinjampara.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-accent text-white rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl font-bold shadow-lg shadow-accent/30">3</div>
+          <h3 class="font-bold text-lg mb-2">Pay Easy</h3>
+          <p class="text-muted text-sm">UPI, cards, or cash on delivery — your choice.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 bg-accent text-white rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl font-bold shadow-lg shadow-accent/30">4</div>
+          <h3 class="font-bold text-lg mb-2">Get It Fast</h3>
+          <p class="text-muted text-sm">Fresh delivery to your door, fast.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Area -->
+  <section id="area" class="py-20 px-6 bg-surface">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="inline-block bg-accent/10 border border-accent/20 rounded-full px-4 py-1.5 text-xs font-semibold text-accent mb-4">
+            COVERAGE
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">{serviceRadiusKm} km from Kozhinjampara</h2>
+          <p class="text-muted text-lg leading-relaxed mb-6">
+            We deliver across a {serviceRadiusKm} km radius from <strong class="text-primary">Kozhinjampara</strong>, our central hub.
+            That covers <strong class="text-primary">RV Pudur, Nattukal, Chittur</strong>, and surrounding villages
+            in <strong class="text-primary">Palakkad district, Kerala</strong>.
+          </p>
+          <p class="text-muted leading-relaxed mb-8">
+            We're expanding the coverage area as more local stores join the network.
+            Add your address in the app to see what's available right now.
+          </p>
+          <a
+            href="#download"
+            class="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3.5 rounded-xl transition-colors"
+          >
+            Check Your Address
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+        <div class="relative aspect-square max-w-md mx-auto">
+          <!-- Decorative coverage circle -->
+          <div class="absolute inset-0 rounded-full bg-gradient-to-br from-accent/20 to-emerald-500/10 border-2 border-dashed border-accent/40 flex items-center justify-center">
+            <div class="absolute inset-8 rounded-full bg-accent/10 border border-accent/30"></div>
+            <div class="absolute inset-16 rounded-full bg-accent/15 border border-accent/40"></div>
+            <div class="relative bg-white rounded-2xl px-5 py-4 shadow-xl text-center">
+              <div class="text-2xl mb-1">📍</div>
+              <div class="font-bold text-primary">Kozhinjampara</div>
+              <div class="text-xs text-muted">Center · Palakkad, Kerala</div>
+            </div>
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-white text-primary text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full shadow-lg border border-gray-100">
+              {serviceRadiusKm} km Radius
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download CTA -->
+  <section id="download" class="relative bg-primary text-white py-20 px-6 overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-accent/20 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl"></div>
+    <div class="relative max-w-5xl mx-auto text-center">
+      <div class="inline-block bg-accent/20 border border-accent/40 rounded-full px-4 py-1.5 text-xs font-semibold text-accent-light mb-6">
+        DOWNLOAD NOW
+      </div>
+      <h2 class="text-3xl md:text-5xl font-bold mb-6" style="font-family: var(--font-display)">
+        Get OnePlace <span class="text-accent-light">Delivery</span>
+      </h2>
+      <p class="text-gray-300 text-lg max-w-2xl mx-auto mb-10">
+        One app for everything. Start with groceries today, food and medicines launching soon.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a
+          href={playStoreUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-3 bg-white text-primary hover:bg-accent hover:text-white font-semibold px-7 py-4 rounded-xl transition-colors"
+        >
+          <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5ZM16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12ZM20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81ZM6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z"/>
+          </svg>
+          <div class="text-left leading-tight">
+            <div class="text-[10px] uppercase tracking-widest opacity-80">GET IT ON</div>
+            <div class="font-bold">Google Play</div>
+          </div>
+        </a>
+        <a
+          href={appStoreUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-3 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold px-7 py-4 rounded-xl transition-colors"
+        >
+          <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+          </svg>
+          <div class="text-left leading-tight">
+            <div class="text-[10px] uppercase tracking-widest opacity-80">Coming Soon</div>
+            <div class="font-bold">App Store</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-20 px-6 bg-surface">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <div class="inline-block bg-accent/10 border border-accent/20 rounded-full px-4 py-1.5 text-xs font-semibold text-accent mb-4">
+          FREQUENTLY ASKED
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Popular Questions</h2>
+      </div>
+      <div class="space-y-3">
+        {faqs.map((faq) => (
+          <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-accent/40 transition-colors">
+            <summary class="flex items-center justify-between gap-4 p-6 cursor-pointer list-none">
+              <h3 class="font-semibold text-primary text-base md:text-lg leading-snug">
+                {faq.q}
+              </h3>
+              <span class="flex-shrink-0 w-8 h-8 rounded-full bg-accent/10 text-accent flex items-center justify-center group-open:rotate-45 transition-transform">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 6v12m6-6H6"/></svg>
+              </span>
+            </summary>
+            <div class="px-6 pb-6 text-muted leading-relaxed text-sm md:text-base">
+              {faq.a}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-primary text-gray-400 py-12 px-6 md:px-12">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-8 mb-8">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <img src="/images/oneplace-logo.png" alt="OnePlace Delivery logo" class="w-11 h-11 rounded-lg object-cover border border-white/10 bg-white/5" />
+            <div>
+              <div class="font-bold text-white text-base">OnePlace</div>
+              <div class="text-[11px] uppercase tracking-widest">Delivery</div>
+            </div>
+          </div>
+          <p class="text-sm leading-relaxed">
+            One app for everything you need. Built in Palakkad by
+            <a href={xqUrl} class="text-accent hover:text-accent-light">XQ Tech Solutions</a>.
+          </p>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-3 text-sm uppercase tracking-wider">Explore</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#categories" class="hover:text-white transition-colors">Categories</a></li>
+            <li><a href="#how" class="hover:text-white transition-colors">How It Works</a></li>
+            <li><a href="#area" class="hover:text-white transition-colors">Service Area</a></li>
+            <li><a href="#faq" class="hover:text-white transition-colors">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-semibold mb-3 text-sm uppercase tracking-wider">Contact</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="mailto:admin@xqtechsolutions.com" class="hover:text-white transition-colors">admin@xqtechsolutions.com</a></li>
+            <li><a href={`https://wa.me/${supportWhatsApp}`} target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">WhatsApp Support</a></li>
+            <li>Kozhinjampara, Palakkad</li>
+            <li>Kerala, India</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 pt-6 text-center text-sm">
+        &copy; {new Date().getFullYear()} OnePlace Delivery · A product of
+        <a href={xqUrl} class="text-accent hover:text-accent-light">XQ Tech Solutions</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a
+    href={`https://wa.me/${supportWhatsApp}?text=Hi%2C%20I%20need%20help%20with%20OnePlace%20Delivery`}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-green-500/30 transition-all hover:scale-110"
+    aria-label="Chat with OnePlace Delivery on WhatsApp"
+  >
+    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+</BaseLayout>
