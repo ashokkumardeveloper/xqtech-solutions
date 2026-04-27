@@ -4,6 +4,8 @@ import tailwindcss from '@tailwindcss/vite';
 
 import sitemap from '@astrojs/sitemap';
 
+import cloudflare from '@astrojs/cloudflare';
+
 export default defineConfig({
   site: 'https://xqtechsolutions.in',
 
@@ -16,4 +18,6 @@ export default defineConfig({
     priority: 0.7,
     lastmod: new Date(),
   })],
+
+  adapter: cloudflare(),
 });
