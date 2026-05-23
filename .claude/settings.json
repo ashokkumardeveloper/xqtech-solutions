@@ -4,7 +4,17 @@
       "Bash(mkdir -p \"d:/portfolio/xqtech-solutions/oneplace/public/images\")",
       "Bash(mkdir -p \"d:/portfolio/xqtech-solutions/oneplace/src/styles\")",
       "Bash(mkdir -p \"d:/portfolio/xqtech-solutions/oneplace/src/layouts\")",
-      "Bash(cp \"d:/portfolio/xqtech-solutions/assets/oneplace/oneplace_logo.png\" \"d:/portfolio/xqtech-solutions/oneplace/public/images/oneplace-logo.png\")"
+      "Bash(cp \"d:/portfolio/xqtech-solutions/assets/oneplace/oneplace_logo.png\" \"d:/portfolio/xqtech-solutions/oneplace/public/images/oneplace-logo.png\")",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git -C \"d:/portfolio/xqtech-solutions\" status)",
+      "Bash(git -C \"d:/portfolio/xqtech-solutions\" add oneplace/src/pages/index.astro)",
+      "Bash(git -C d:/portfolio/xqtech-solutions commit -m ' *)",
+      "Bash(git -C \"d:/portfolio/xqtech-solutions\" push origin main)",
+      "Bash(Get-ChildItem -Path \"d:\\\\portfolio\\\\xqtech-solutions\" -Recurse -Force)",
+      "Bash(Select-Object -Property FullName, PSIsContainer)",
+      "Bash(Sort-Object FullName)",
+      "Bash(Format-Table -AutoSize)"
     ]
   }
 }
