@@ -1,0 +1,534 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/global.css";
+
+const siteUrl = "https://refreshhealthy.in";
+const xqUrl = "https://xqtechsolutions.in";
+const playStoreUrl = "https://play.google.com/store/apps/details?id=com.xqtechsolutions.refresh";
+const webAppUrl = "https://eat-fit-healthy.web.app/";
+const supportEmail = "xqtechsolutions@gmail.com";
+const supportWhatsApp = "916235455560";
+const supportWhatsAppDisplay = "+91 6235455560";
+
+const seoKeywords = [
+  "refresh app", "refresh healthy meals", "refresh gym meals", "refreshhealthy.in",
+  "healthy meal delivery", "high protein meal delivery", "macro meals", "macro tracked meals",
+  "gym meal delivery", "fitness meal delivery", "chef made healthy meals", "build your own meal app",
+  "protein meals delivery", "clean eating delivery", "weighed portion meals", "macros on every meal",
+  "healthy meal delivery palakkad", "gym food delivery palakkad", "protein meals palakkad",
+  "eat like you train", "cloud kitchen healthy food", "cut meals", "bulk meals", "lean meal plan"
+].join(", ");
+
+const appSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "Refresh",
+  "operatingSystem": "Android, iOS, Web",
+  "applicationCategory": "HealthApplication",
+  "description": "Refresh — chef-cooked healthy meals and build-your-own bowls, weighed to the gram with macros you can trust, delivered to your gym in time for training.",
+  "url": siteUrl,
+  "installUrl": playStoreUrl,
+  "publisher": { "@type": "Organization", "name": "XQ Tech Solutions", "url": xqUrl },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
+});
+
+const faqs = [
+  { q: "What is Refresh?", a: "Refresh is a healthy-meal app for people who train. Order chef-cooked meals or build your own bowl with live macros, then collect it at your gym. Every plate is weighed and comes with its full macro breakdown — protein, carbs, fat, and fiber." },
+  { q: "How does delivery work?", a: "Meals are delivered to the front desk of the partner gym you select, timed to training slots so your food never sits in traffic. Order for specific days and slots up to 7 days ahead, and collect your box during your slot." },
+  { q: "Can I match meals to my goal?", a: "Yes. Whether you're building muscle, cutting, staying lean, or training for endurance, filter meals by goal and build your own with the macro rings updating live as you go." },
+  { q: "Can I trust the macros?", a: "Every portion is weighed to the gram in one cloud kitchen — no dark-kitchen roulette. The numbers on the app match the food in the box, and our kitchen is FSSAI-registered." },
+  { q: "What payment methods are supported?", a: "Orders are paid in full at checkout via UPI, cards, and net banking through our secure provider, Razorpay. Your card details never touch our servers." },
+  { q: "What if I need to cancel?", a: "Cancel any delivery day before its cutoff and the full amount is credited to your in-app wallet instantly — usable on orders, not withdrawable. After the cutoff the kitchen has already started cooking. If we ever fail you, that day is credited in full." }
+];
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(f => ({ "@type": "Question", "name": f.q, "acceptedAnswer": { "@type": "Answer", "text": f.a } }))
+});
+
+const combinedSchema = `${appSchema}</script><script type="application/ld+json">${faqSchema}`;
+
+// Goal filter = the page spine. One tap re-skins the rail word, ticket, order line + bowl rings.
+const goals = [
+  { id: "muscle",    label: "Build Muscle", emoji: "💪", word: "train.",           tagline: "Surplus fuel, protein-forward.",      meal: "Double Chicken & Brown Rice", kcal: 720, protein: 58, carbs: 62, fat: 18, pP: 84, pC: 66, pF: 46, pFbr: 40 },
+  { id: "cut",       label: "Lean & Cut",   emoji: "🔥", word: "cut.",             tagline: "High protein, lighter calories.",     meal: "Grilled Fish & Greens",       kcal: 430, protein: 44, carbs: 22, fat: 14, pP: 64, pC: 26, pF: 36, pFbr: 48 },
+  { id: "maintain",  label: "Stay Lean",    emoji: "🥗", word: "stay lean.",       tagline: "Balanced plates for every day.",      meal: "Paneer Buddha Bowl",          kcal: 560, protein: 34, carbs: 48, fat: 20, pP: 50, pC: 54, pF: 62, pFbr: 58 },
+  { id: "endurance", label: "Endurance",    emoji: "🏃", word: "go the distance.", tagline: "Clean carbs that go the distance.",  meal: "Sweet Potato & Egg Bowl",     kcal: 610, protein: 30, carbs: 74, fat: 16, pP: 44, pC: 90, pF: 40, pFbr: 66 },
+];
+
+const ingredients = [
+  { name: "Brown rice", g: "180 g" },
+  { name: "Grilled chicken", g: "160 g" },
+  { name: "Greens & veg", g: "120 g" },
+  { name: "House sauce", g: "30 g" },
+];
+
+const timetable = [
+  { n: "01", action: "Pick your gym", detail: "Your training spot", time: "Set once" },
+  { n: "02", action: "Choose or build", detail: "Chef meal or your bowl", time: "Live macros" },
+  { n: "03", action: "Pay in full", detail: "UPI / card · Razorpay", time: "At checkout" },
+  { n: "04", action: "Collect at the desk", detail: "Front desk, your slot", time: "In your slot" },
+];
+
+const ledger = [
+  { you: "Cancel before cutoff", we: "Full amount to your wallet, instant.*" },
+  { you: "Order 7 days ahead", we: "We cook against real orders each morning." },
+  { you: "Pick one kitchen", we: "No dark-kitchen roulette. Same hands." },
+  { you: "Read the macros", we: "Weighed to the gram, verified." },
+];
+
+const marqueeWords = ["High protein", "Macro-verified", "Chef-cooked", "Weighed to the gram", "Delivered to your gym", "No dark-kitchen roulette"];
+
+const playSvg = `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5ZM16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12ZM20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81ZM6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z"/></svg>`;
+---
+
+<BaseLayout
+  title="Refresh - Eat Like You Train | Chef-Cooked, Macro-Verified Meals Delivered to Your Gym"
+  description="Refresh — chef-cooked healthy meals and build-your-own bowls, weighed to the gram with macros you can trust, delivered to your gym in time for training. Fuel your goals."
+  keywords={seoKeywords}
+  schema={combinedSchema}
+>
+  <div class="lg:grid lg:grid-cols-[40%_60%] bg-forest">
+
+    <!-- ================= FIXED LEFT RAIL — THE CONSOLE ================= -->
+    <aside id="rail" class="bg-forest text-white lg:fixed lg:inset-y-0 lg:left-0 lg:w-[40%] flex flex-col justify-between gap-8 px-7 sm:px-10 lg:px-12 py-9 lg:py-10 min-h-[88vh] lg:min-h-screen overflow-hidden lg:overflow-y-auto" style="--rail-accent:#a7d94b">
+      <!-- brand -->
+      <div class="flex items-center justify-between">
+        <a href="/" class="flex items-center gap-3">
+          <span class="w-9 h-9 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center">
+            <svg class="w-5 h-5" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+              <path d="M32 46V30" stroke="#a7d94b" stroke-width="4" stroke-linecap="round"/>
+              <path d="M32 32c0-7-5-12-13-13 0 8 5 13 13 13Z" fill="#4e9a3d"/>
+              <path d="M32 28c0-6 4-11 12-12 0 7-5 12-12 12Z" fill="#3e9142"/>
+            </svg>
+          </span>
+          <span class="font-bold tracking-tight text-lg" style="font-family: var(--font-display)">Refresh</span>
+        </a>
+        <span class="inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em]" style="border-color:color-mix(in srgb,var(--rail-accent) 40%,transparent);color:var(--rail-accent)">
+          <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background:var(--rail-accent)"></span>FSSAI-registered
+        </span>
+      </div>
+
+      <!-- anchor headline + subhead -->
+      <div class="max-w-md">
+        <h1 class="font-bold leading-[0.95] tracking-tight" style="font-family: var(--font-display); font-size: clamp(2.6rem, 5vw, 4.6rem)">
+          Eat like<br />you <span class="inline-block overflow-hidden align-bottom h-[1.05em]"><span id="goalWord" class="goal-word text-volt">train.</span></span>
+        </h1>
+        <p class="text-white/70 text-base md:text-lg mt-5 leading-relaxed">
+          Chef-cooked meals and build-your-own bowls, weighed to the gram, collected at your gym
+          in your slot.
+        </p>
+      </div>
+
+      <!-- control block: goal filter + live ticket + CTAs -->
+      <div class="space-y-5">
+        <!-- goal filter -->
+        <div>
+          <div class="text-[10px] font-bold uppercase tracking-[0.18em] text-white/45 mb-2.5">Choose your goal</div>
+          <div id="goalFilter" role="radiogroup" aria-label="Choose your goal" class="grid grid-cols-2 gap-2">
+            {goals.map((g, i) => (
+              <button
+                type="button"
+                class={`goal-btn inline-flex items-center gap-2 rounded-xl border px-3 py-2.5 text-sm text-left transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-volt ${i === 0 ? "bg-volt text-forest border-volt font-bold" : "bg-white/5 text-white/85 border-white/15 font-semibold hover:border-white/40"}`}
+                role="radio"
+                aria-checked={i === 0 ? "true" : "false"}
+                tabindex={i === 0 ? 0 : -1}
+                data-goal={g.id}
+              >
+                <span aria-hidden="true">{g.emoji}</span>{g.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <!-- live order ticket (gym-desk receipt) -->
+        <div class="relative rounded-2xl bg-surface text-ink p-4 sm:p-5" style="background-image:radial-gradient(circle at 9px -5px, transparent 6px, var(--color-surface) 6px); background-size:18px 100%">
+          <div class="flex items-center justify-between mb-3">
+            <span class="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-muted">
+              <span class="w-1.5 h-1.5 rounded-full bg-clay animate-pulse"></span>Today's box · live
+            </span>
+            <span class="text-[10px] font-bold uppercase tracking-[0.16em] text-muted">weighed</span>
+          </div>
+          <div class="text-lg sm:text-xl font-bold text-primary mb-4 leading-tight" style="font-family: var(--font-display)" data-refresh-meal>Double Chicken & Brown Rice</div>
+          <div class="grid grid-cols-3 gap-3 mb-4">
+            <div class="text-center">
+              <div class="macro-ring mx-auto w-12 h-12 rounded-full grid place-items-center" data-ring="p" style="--p:84%; background: conic-gradient(var(--color-clay) 0 var(--p), var(--color-hairline) 0)">
+                <span class="w-8 h-8 rounded-full bg-white grid place-items-center text-[11px] font-bold tabular-nums text-clay"><span data-refresh-p>58</span>g</span>
+              </div>
+              <div class="text-[10px] font-semibold text-muted mt-1">Protein</div>
+            </div>
+            <div class="text-center">
+              <div class="macro-ring mx-auto w-12 h-12 rounded-full grid place-items-center" data-ring="c" style="--p:66%; background: conic-gradient(var(--color-honey) 0 var(--p), var(--color-hairline) 0)">
+                <span class="w-8 h-8 rounded-full bg-white grid place-items-center text-[11px] font-bold tabular-nums text-honey"><span data-refresh-c>62</span>g</span>
+              </div>
+              <div class="text-[10px] font-semibold text-muted mt-1">Carbs</div>
+            </div>
+            <div class="text-center">
+              <div class="macro-ring mx-auto w-12 h-12 rounded-full grid place-items-center" data-ring="f" style="--p:46%; background: conic-gradient(var(--color-teal) 0 var(--p), var(--color-hairline) 0)">
+                <span class="w-8 h-8 rounded-full bg-white grid place-items-center text-[11px] font-bold tabular-nums text-teal"><span data-refresh-f>18</span>g</span>
+              </div>
+              <div class="text-[10px] font-semibold text-muted mt-1">Fat</div>
+            </div>
+          </div>
+          <div class="flex items-center justify-between rounded-xl bg-forest text-white px-3.5 py-2.5">
+            <div class="leading-tight">
+              <div class="text-[10px] uppercase tracking-[0.16em] text-volt">Total energy</div>
+              <div class="font-bold tabular-nums" style="font-family: var(--font-display)"><span data-refresh-kcal>720</span> kcal</div>
+            </div>
+            <span class="text-[10px] font-bold uppercase tracking-widest text-volt border border-volt/40 rounded px-2 py-1 -rotate-3">weighed</span>
+          </div>
+        </div>
+
+        <!-- install CTAs -->
+        <div class="flex flex-col sm:flex-row gap-2.5">
+          <a href={playStoreUrl} target="_blank" rel="noopener noreferrer" set:html={`${playSvg}<span>Google Play</span>`}
+             class="flex-1 flex items-center justify-center gap-2.5 bg-volt text-forest font-bold px-4 py-3 rounded-full hover:brightness-105 transition"></a>
+          <a href={webAppUrl} target="_blank" rel="noopener noreferrer"
+             class="flex-1 flex items-center justify-center gap-2 border border-white/25 bg-white/5 hover:bg-white/12 text-white font-semibold px-4 py-3 rounded-full transition-colors">Web app →</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ================= SCROLLING RIGHT COLUMN ================= -->
+    <main class="lg:col-start-2">
+
+      <!-- Screen 01 · THE ORDER (dark, seamless with rail) -->
+      <section data-accent="#a7d94b" class="bg-forest text-white min-h-screen flex flex-col justify-center relative overflow-hidden px-7 sm:px-10 lg:px-16 py-24">
+        <div aria-hidden="true" class="pointer-events-none select-none absolute -right-4 top-8 text-outline text-white/[0.05] font-semibold leading-none" style="font-family: var(--font-display); font-size: clamp(6rem, 14vw, 15rem)">FUEL</div>
+        <div class="relative max-w-2xl">
+          <div class="grid grid-cols-4 gap-3 text-[10px] font-bold uppercase tracking-[0.16em] text-volt/80 border-b border-white/10 pb-3 mb-4">
+            <span>Slot</span><span>Gym</span><span>Goal</span><span class="text-right">Total</span>
+          </div>
+          <div class="grid grid-cols-4 gap-3 text-sm font-semibold tabular-nums pb-8 mb-2">
+            <span>6:30 pm</span><span>Your gym</span><span data-refresh-goal>Build Muscle</span><span class="text-right"><span data-refresh-kcal>720</span> kcal</span>
+          </div>
+          <h2 class="font-bold leading-[0.98] tracking-tight mb-6" style="font-family: var(--font-display); font-size: clamp(2.4rem, 5.5vw, 4.25rem)">
+            Your box is <span class="text-volt">weighed</span><br />before it's yours.
+          </h2>
+          <p class="text-white/70 text-lg max-w-xl leading-relaxed">
+            Order up to 7 days ahead, pay in full, collect at the front desk timed to your
+            training slot. The macros on the app are the food in the box.
+          </p>
+          <a href="#build" class="inline-flex items-center gap-2 mt-8 text-volt font-semibold hover:gap-3 transition-all">Read the story <span aria-hidden="true">↓</span></a>
+        </div>
+      </section>
+
+      <!-- Screen 02 · BUILD THE BOWL (paper — seam flips to light) -->
+      <section id="build" data-accent="#e8a33d" class="bg-surface text-ink min-h-screen relative overflow-hidden px-7 sm:px-10 lg:px-16 py-24">
+        <div aria-hidden="true" class="pointer-events-none select-none absolute -left-4 bottom-6 text-outline text-ink/[0.06] font-semibold leading-none" style="font-family: var(--font-display); font-size: clamp(6rem, 13vw, 14rem)">BUILD</div>
+        <div class="relative grid lg:grid-cols-[1fr_auto] gap-12 lg:gap-16 items-center">
+          <div class="max-w-lg">
+            <h2 class="font-bold text-primary leading-[1.02] mb-2" style="font-family: var(--font-display); font-size: clamp(2.2rem, 4.5vw, 3.4rem)">Stack the bowl.<br />Watch the macros land.</h2>
+            <p class="text-muted mb-8">Add foods and portions — every row weighed. The rings climb to the goal you picked in the console.</p>
+            <div class="divide-y divide-hairline border-y border-hairline">
+              {ingredients.map((it) => (
+                <div class="reveal flex items-center justify-between py-4">
+                  <span class="font-semibold text-primary">{it.name}</span>
+                  <span class="tabular-nums text-muted text-sm">{it.g}</span>
+                </div>
+              ))}
+            </div>
+            <!-- DELTA vs GOAL meter -->
+            <div class="mt-8">
+              <div class="flex items-center justify-between text-[11px] font-bold uppercase tracking-[0.16em] text-muted mb-2">
+                <span>Build fit vs goal</span><span class="text-accent-dark" id="deltaVal">Build Muscle</span>
+              </div>
+              <div class="h-2 rounded-full bg-hairline overflow-hidden">
+                <div id="deltaBar" class="h-full rounded-full bg-accent transition-[width] duration-500" style="width:84%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ring cluster -->
+          <div class="grid grid-cols-2 gap-5 shrink-0 mx-auto">
+            <div class="text-center">
+              <div class="macro-ring w-24 h-24 rounded-full grid place-items-center" data-ring="p" style="--p:84%; background: conic-gradient(var(--color-clay) 0 var(--p), var(--color-hairline) 0)">
+                <span class="w-16 h-16 rounded-full bg-white grid place-items-center font-bold text-clay" style="font-family: var(--font-display)">P</span>
+              </div>
+              <div class="text-xs font-semibold text-muted mt-2">Protein</div>
+            </div>
+            <div class="text-center">
+              <div class="macro-ring w-24 h-24 rounded-full grid place-items-center" data-ring="c" style="--p:66%; background: conic-gradient(var(--color-honey) 0 var(--p), var(--color-hairline) 0)">
+                <span class="w-16 h-16 rounded-full bg-white grid place-items-center font-bold text-honey" style="font-family: var(--font-display)">C</span>
+              </div>
+              <div class="text-xs font-semibold text-muted mt-2">Carbs</div>
+            </div>
+            <div class="text-center">
+              <div class="macro-ring w-24 h-24 rounded-full grid place-items-center" data-ring="f" style="--p:46%; background: conic-gradient(var(--color-teal) 0 var(--p), var(--color-hairline) 0)">
+                <span class="w-16 h-16 rounded-full bg-white grid place-items-center font-bold text-teal" style="font-family: var(--font-display)">F</span>
+              </div>
+              <div class="text-xs font-semibold text-muted mt-2">Fat</div>
+            </div>
+            <div class="text-center">
+              <div class="macro-ring w-24 h-24 rounded-full grid place-items-center" data-ring="fbr" style="--p:40%; background: conic-gradient(var(--color-olive) 0 var(--p), var(--color-hairline) 0)">
+                <span class="w-16 h-16 rounded-full bg-white grid place-items-center font-bold" style="font-family: var(--font-display); color: var(--color-olive)">Fbr</span>
+              </div>
+              <div class="text-xs font-semibold text-muted mt-2">Fiber</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Marquee seam -->
+      <div class="bg-volt text-forest py-2.5 overflow-hidden border-y-2 border-forest/10">
+        <div class="flex whitespace-nowrap animate-marquee">
+          {[0, 1].map((copy) => (
+            <div class="flex items-center shrink-0" aria-hidden={copy === 1 ? "true" : undefined}>
+              {marqueeWords.map((m) => (
+                <span class="flex items-center text-sm font-bold uppercase tracking-widest px-6">{m}<span class="ml-6 text-forest/40" aria-hidden="true">✦</span></span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Screen 03 · FROM GYM TO PLATE (paper) — departures-board timetable -->
+      <section data-accent="#e8a33d" class="bg-surface text-ink relative overflow-hidden px-7 sm:px-10 lg:px-16 py-24">
+        <div aria-hidden="true" class="pointer-events-none select-none absolute -right-4 top-6 text-outline text-ink/[0.06] font-semibold leading-none" style="font-family: var(--font-display); font-size: clamp(6rem, 13vw, 14rem)">SLOT</div>
+        <div class="relative">
+          <h2 class="font-bold text-primary leading-tight mb-10" style="font-family: var(--font-display); font-size: clamp(2.2rem, 4.5vw, 3.4rem)">From gym to plate</h2>
+          <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-hairline border-y border-hairline">
+            {timetable.map((t) => (
+              <div class="reveal px-4 py-6">
+                <div class="text-outline text-ink/70 font-semibold leading-none mb-4" style="font-family: var(--font-display); font-size: clamp(2.4rem, 6vw, 4.5rem)">{t.n}</div>
+                <div class="text-[10px] font-bold uppercase tracking-[0.16em] text-muted">Action</div>
+                <div class="text-sm font-semibold text-primary mb-3">{t.action}</div>
+                <div class="text-[10px] font-bold uppercase tracking-[0.16em] text-muted">Detail</div>
+                <div class="text-sm text-ink mb-3">{t.detail}</div>
+                <div class="text-[10px] font-bold uppercase tracking-[0.16em] text-muted">Time</div>
+                <div class="text-sm font-semibold text-accent-dark tabular-nums">{t.time}</div>
+              </div>
+            ))}
+          </div>
+          <div class="h-px bg-honey w-full mt-6"></div>
+        </div>
+      </section>
+
+      <!-- Screen 04 · TRUST, BY THE GRAM (dark — seam flips back) — ledger -->
+      <section data-accent="#a7d94b" class="bg-forest text-white relative overflow-hidden px-7 sm:px-10 lg:px-16 py-24">
+        <div aria-hidden="true" class="pointer-events-none select-none absolute -right-4 bottom-6 text-outline text-white/[0.05] font-semibold leading-none" style="font-family: var(--font-display); font-size: clamp(6rem, 13vw, 14rem)">WEIGHED</div>
+        <div class="relative">
+          <h2 class="font-bold leading-[1.05] max-w-2xl mb-10" style="font-family: var(--font-display); font-size: clamp(2rem, 4.5vw, 3.4rem)">
+            The number on the app is the <span class="text-volt">food in the box.</span>
+          </h2>
+          <div class="border-t-2 border-white/80 max-w-3xl">
+            <div class="grid grid-cols-2 text-[10px] font-bold uppercase tracking-[0.16em] text-white/50 py-3 border-b border-white/10">
+              <span>You do</span><span>We do</span>
+            </div>
+            {ledger.map((row) => (
+              <div class="reveal grid grid-cols-2 gap-4 py-4 border-b border-white/10 items-baseline">
+                <span class="text-white/85 text-sm md:text-base">{row.you}</span>
+                <span class="text-white font-semibold text-sm md:text-base">{row.we}</span>
+              </div>
+            ))}
+          </div>
+          <div class="flex flex-wrap items-center gap-4 mt-6 max-w-3xl">
+            <span class="reveal inline-flex items-center gap-1.5 rounded-full bg-honey/15 text-honey px-3 py-1 text-[11px] font-bold">✓ Cancelled → +₹420 credited</span>
+            <p class="text-white/45 text-xs">*Wallet credit is usable on orders, not withdrawable.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Screen 05 · STRAIGHT ANSWERS (paper) — native details FAQ -->
+      <section data-accent="#e8a33d" class="bg-surface text-ink px-7 sm:px-10 lg:px-16 py-24">
+        <h2 class="font-bold text-primary leading-tight mb-8" style="font-family: var(--font-display); font-size: clamp(2.2rem, 4.5vw, 3.4rem)">Straight answers</h2>
+        <div class="max-w-2xl">
+          {faqs.map((faq) => (
+            <details class="group border-b border-hairline py-5">
+              <summary class="flex items-center justify-between gap-4 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                <h3 class="font-semibold text-primary text-base md:text-lg leading-snug">{faq.q}</h3>
+                <span class="flex-shrink-0 w-7 h-7 rounded-md bg-forest text-volt grid place-items-center group-open:rotate-45 transition-transform">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 6v12m6-6H6"/></svg>
+                </span>
+              </summary>
+              <p class="mt-3 text-muted text-[15px] leading-relaxed">{faq.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <!-- Screen 06 · CLOSE + FOOTER (dark, full-bleed) -->
+      <section id="screen-close" class="bg-forest text-white px-7 sm:px-10 lg:px-16 pt-24 pb-28 lg:pb-24">
+        <div class="max-w-3xl">
+          <h2 class="font-bold leading-[0.98]" style="font-family: var(--font-display); font-size: clamp(2rem, 4.5vw, 3.25rem)">
+            Your goals don't wait.<br />Your <span class="text-volt">fuel</span> shouldn't either.
+          </h2>
+          <p class="text-white/60 text-sm mt-5 uppercase tracking-[0.14em] font-semibold">FSSAI-registered · Weighed to the gram · Payments secured by Razorpay</p>
+          <div class="flex flex-col sm:flex-row gap-3 mt-8">
+            <a href={playStoreUrl} target="_blank" rel="noopener noreferrer" set:html={`${playSvg}<span>Get it on Google Play</span>`}
+               class="inline-flex items-center justify-center gap-2.5 bg-volt text-forest font-bold px-6 py-3.5 rounded-full hover:brightness-105 transition"></a>
+            <a href={webAppUrl} target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center gap-2 border border-white/25 bg-white/5 hover:bg-white/12 text-white font-semibold px-6 py-3.5 rounded-full transition-colors">Open the web app →</a>
+          </div>
+        </div>
+
+        <footer class="border-t border-white/12 pt-8 mt-16 grid gap-8 md:grid-cols-3 text-sm text-white/70">
+          <div>
+            <div class="flex items-center gap-2.5 mb-3 text-white">
+              <span class="w-8 h-8 rounded-lg bg-white/10 border border-white/10 flex items-center justify-center">
+                <svg class="w-4 h-4" viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M32 46V30" stroke="#a7d94b" stroke-width="4" stroke-linecap="round"/><path d="M32 32c0-7-5-12-13-13 0 8 5 13 13 13Z" fill="#4e9a3d"/><path d="M32 28c0-6 4-11 12-12 0 7-5 12-12 12Z" fill="#3e9142"/></svg>
+              </span>
+              <span class="font-bold" style="font-family: var(--font-display)">Refresh</span>
+            </div>
+            <p class="leading-relaxed max-w-xs">Eat like you train. Built in Palakkad by <a href={xqUrl} class="text-volt hover:underline">XQ Tech Solutions</a>.</p>
+          </div>
+          <div>
+            <div class="text-white font-semibold mb-3 text-xs uppercase tracking-wider">Legal</div>
+            <ul class="space-y-2">
+              <li><a href="/privacy-policy" class="hover:text-white transition-colors">Privacy Policy</a></li>
+              <li><a href="/terms" class="hover:text-white transition-colors">Terms &amp; Conditions</a></li>
+              <li><a href="/delete-request" class="hover:text-white transition-colors">Delete Account</a></li>
+            </ul>
+          </div>
+          <div>
+            <div class="text-white font-semibold mb-3 text-xs uppercase tracking-wider">Contact</div>
+            <ul class="space-y-2">
+              <li><a href={`mailto:${supportEmail}`} class="hover:text-white transition-colors">{supportEmail}</a></li>
+              <li><a href={`https://wa.me/${supportWhatsApp}`} target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">WhatsApp {supportWhatsAppDisplay}</a></li>
+              <li>Palakkad, Kerala, India</li>
+            </ul>
+          </div>
+        </footer>
+        <div class="text-center text-white/40 text-xs mt-8">&copy; {new Date().getFullYear()} Refresh · A product of XQ Tech Solutions</div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ================= MOBILE STICKY TICKET BAR ================= -->
+  <div id="mobileTicket" class="lg:hidden fixed bottom-0 inset-x-0 z-30 bg-forest/95 backdrop-blur border-t border-white/12 px-4 py-2.5 transition-transform duration-300">
+    <div class="flex items-center gap-3">
+      <div class="min-w-0 flex-1">
+        <div class="text-[10px] uppercase tracking-[0.16em] text-volt font-bold">Today's box</div>
+        <div class="text-white text-sm font-semibold truncate" data-refresh-meal>Double Chicken & Brown Rice</div>
+      </div>
+      <div class="text-right shrink-0">
+        <div class="text-white font-bold tabular-nums text-sm" style="font-family: var(--font-display)"><span data-refresh-kcal>720</span> kcal</div>
+      </div>
+    </div>
+    <div class="flex gap-1.5 mt-2 overflow-x-auto snap-x">
+      {goals.map((g, i) => (
+        <button type="button" data-goal={g.id} aria-pressed={i === 0 ? "true" : "false"}
+          class={`goal-chip snap-start shrink-0 rounded-full px-3 py-1 text-xs font-semibold transition-colors ${i === 0 ? "bg-volt text-forest" : "bg-white/10 text-white/80"}`}>
+          <span aria-hidden="true">{g.emoji}</span> {g.label}
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <!-- Floating WhatsApp -->
+  <a href={`https://wa.me/${supportWhatsApp}?text=Hi%2C%20I%20need%20help%20with%20the%20Refresh%20app`}
+     target="_blank" rel="noopener noreferrer"
+     class="fixed bottom-24 lg:bottom-6 right-5 z-40 bg-forest hover:bg-primary text-volt w-12 h-12 rounded-xl border border-white/15 flex items-center justify-center shadow-lg transition-all hover:scale-110"
+     aria-label="Chat with Refresh on WhatsApp">
+    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script define:vars={{ goals }}>
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const byId = Object.fromEntries(goals.map((g) => [g.id, g]));
+    const $$ = (s) => Array.from(document.querySelectorAll(s));
+    const gw = document.getElementById("goalWord");
+
+    function countUp(el, to) {
+      const from = parseInt((el.textContent || "").replace(/\D/g, "")) || 0;
+      if (reduce || from === to) { el.textContent = to; return; }
+      const t0 = performance.now(), dur = 520;
+      function tick(t) {
+        const k = Math.min(1, (t - t0) / dur);
+        const e = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+        el.textContent = Math.round(from + (to - from) * e);
+        if (k < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    function flipWord(w) {
+      if (!gw) return;
+      if (reduce) { gw.textContent = w; return; }
+      gw.style.transform = "translateY(-0.55em)";
+      gw.style.opacity = "0";
+      setTimeout(() => { gw.textContent = w; gw.style.transform = "translateY(0)"; gw.style.opacity = "1"; }, 165);
+    }
+
+    function setRing(sel, pct) { $$(sel).forEach((el) => el.style.setProperty("--p", pct + "%")); }
+
+    function apply(g) {
+      $$("[data-refresh-meal]").forEach((el) => (el.textContent = g.meal));
+      $$("[data-refresh-goal]").forEach((el) => (el.textContent = g.label));
+      $$("[data-refresh-p]").forEach((el) => (el.textContent = g.protein));
+      $$("[data-refresh-c]").forEach((el) => (el.textContent = g.carbs));
+      $$("[data-refresh-f]").forEach((el) => (el.textContent = g.fat));
+      $$("[data-refresh-kcal]").forEach((el) => countUp(el, g.kcal));
+      setRing('[data-ring="p"]', g.pP);
+      setRing('[data-ring="c"]', g.pC);
+      setRing('[data-ring="f"]', g.pF);
+      setRing('[data-ring="fbr"]', g.pFbr);
+      flipWord(g.word);
+      const db = document.getElementById("deltaBar"); if (db) db.style.width = g.pP + "%";
+      const dv = document.getElementById("deltaVal"); if (dv) dv.textContent = g.label;
+      const an = document.getElementById("goalAnnounce"); if (an) an.textContent = `${g.label} selected. ${g.meal}, ${g.kcal} kcal.`;
+    }
+
+    const btnActive = ["bg-volt", "text-forest", "border-volt", "font-bold"];
+    const btnInactive = ["bg-white/5", "text-white/85", "border-white/15", "font-semibold"];
+    const chipActive = ["bg-volt", "text-forest"];
+    const chipInactive = ["bg-white/10", "text-white/80"];
+
+    function selectGoal(id) {
+      const g = byId[id]; if (!g) return;
+      apply(g);
+      $$(".goal-btn").forEach((b) => {
+        const on = b.dataset.goal === id;
+        b.setAttribute("aria-checked", on ? "true" : "false");
+        b.tabIndex = on ? 0 : -1;
+        btnActive.forEach((c) => b.classList.toggle(c, on));
+        btnInactive.forEach((c) => b.classList.toggle(c, !on));
+      });
+      $$(".goal-chip").forEach((b) => {
+        const on = b.dataset.goal === id;
+        b.setAttribute("aria-pressed", on ? "true" : "false");
+        chipActive.forEach((c) => b.classList.toggle(c, on));
+        chipInactive.forEach((c) => b.classList.toggle(c, !on));
+      });
+    }
+
+    $$(".goal-btn, .goal-chip").forEach((b) => b.addEventListener("click", () => selectGoal(b.dataset.goal)));
+
+    // Roving-tabindex keyboard nav for the radiogroup
+    const rg = document.getElementById("goalFilter");
+    if (rg) rg.addEventListener("keydown", (e) => {
+      const btns = Array.from(rg.querySelectorAll(".goal-btn"));
+      const i = btns.findIndex((b) => b.getAttribute("aria-checked") === "true");
+      let n = null;
+      if (e.key === "ArrowRight" || e.key === "ArrowDown") n = (i + 1) % btns.length;
+      else if (e.key === "ArrowLeft" || e.key === "ArrowUp") n = (i - 1 + btns.length) % btns.length;
+      if (n !== null) { e.preventDefault(); selectGoal(btns[n].dataset.goal); btns[n].focus(); }
+    });
+
+    // Scroll reveals
+    const revealIO = new IntersectionObserver((entries) => {
+      entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("is-in"); revealIO.unobserve(en.target); } });
+    }, { threshold: 0.15 });
+    $$(".reveal").forEach((el) => revealIO.observe(el));
+
+    // Per-screen rail accent recolor (deterministic)
+    const rail = document.getElementById("rail");
+    if (rail) {
+      const accIO = new IntersectionObserver((entries) => {
+        entries.forEach((en) => { if (en.isIntersecting) rail.style.setProperty("--rail-accent", en.target.dataset.accent); });
+      }, { threshold: 0.55 });
+      $$("[data-accent]").forEach((el) => accIO.observe(el));
+    }
+
+    // Hide mobile ticket bar once the closing CTA is in view
+    const closeEl = document.getElementById("screen-close");
+    const bar = document.getElementById("mobileTicket");
+    if (closeEl && bar) new IntersectionObserver((entries) => {
+      entries.forEach((en) => bar.classList.toggle("translate-y-full", en.isIntersecting));
+    }, { threshold: 0.25 }).observe(closeEl);
+  </script>
+
+  <!-- a11y live region for goal changes -->
+  <div id="goalAnnounce" aria-live="polite" class="sr-only"></div>
+</BaseLayout>
