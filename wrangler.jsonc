@@ -1,0 +1,16 @@
+{
+  // Cloudflare Workers Static Assets config for the main xqtechsolutions.in site.
+  // This is a static Astro build (no server/SSR), so we deploy the `dist/` folder
+  // as assets with no Worker script.
+  //
+  // In the Cloudflare dashboard (Workers & Pages → this project → Settings → Build):
+  //   Build command:  npm run build      (must run — dist/ is git-ignored)
+  //   Deploy command: npx wrangler deploy
+  //
+  // `name` MUST match your Cloudflare Worker/project name — change it if different.
+  "name": "xqtech-solutions",
+  "compatibility_date": "2026-05-23",
+  "assets": {
+    "directory": "./dist"
+  }
+}

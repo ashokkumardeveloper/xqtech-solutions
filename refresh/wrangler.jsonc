@@ -1,0 +1,16 @@
+{
+  // Cloudflare Workers Static Assets config for the Refresh (refreshhealthy.in) site.
+  // Static Astro build — deploy the `dist/` folder as assets, no Worker script.
+  //
+  // In the Cloudflare dashboard (Workers & Pages → this project → Settings → Build):
+  //   Root directory: refresh
+  //   Build command:  npm run build      (must run — dist/ is git-ignored)
+  //   Deploy command: npx wrangler deploy
+  //
+  // `name` MUST match your Cloudflare Worker/project name — change it if different.
+  "name": "refresh",
+  "compatibility_date": "2026-05-23",
+  "assets": {
+    "directory": "./dist"
+  }
+}
